@@ -11,7 +11,6 @@ const GlobalStyles = createGlobalStyle`
 	}
 
 		body {
-		background-color: rgb(0, 0, 0);
 	  color: rgb(0, 0, 0);
 		font-family: 'Alegreya Sans', 'Lato', sans-serif, -apple-system, BlinkMacSystemFont,
 	    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',

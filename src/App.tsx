@@ -1,7 +1,8 @@
 import React from 'react';
+import Layout from './components/Layout';
 
 function App() {
-  return <></>;
+  return <Layout></Layout>;
 }
 
 export default App;
