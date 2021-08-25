@@ -1,4 +1,4 @@
-const size = {
+export const size = {
   desktopXXL: '3840px',
   desktopXL: '2560px',
   desktopL: '1920px',

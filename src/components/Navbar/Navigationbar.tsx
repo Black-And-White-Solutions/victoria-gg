@@ -1,8 +1,14 @@
 import React, { VoidFunctionComponent } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import styled from 'styled-components';
 // import { Grid, Cell } from 'styled-css-grid-v5';
-// import { device } from './assets/mediaSizes.js';
+import {
+  NavBar,
+  NavLink,
+  Bars,
+  NavMenu,
+  NavBtn,
+  NavBtnLink,
+} from './NavbarElements';
 
 const NavigationBar: VoidFunctionComponent = () => {
   return (
@@ -13,21 +19,11 @@ const NavigationBar: VoidFunctionComponent = () => {
         </NavLink>
         <Bars />
         <NavMenu>
-          <NavLink to="/" activeStyle>
-            Content
-          </NavLink>
-          <NavLink to="/" activeStyle>
-            Content
-          </NavLink>
-          <NavLink to="/" activeStyle>
-            Content
-          </NavLink>
-          <NavLink to="/" activeStyle>
-            Content
-          </NavLink>
-          <NavLink to="/" activeStyle>
-            Content
-          </NavLink>
+          <NavLink to="/">Content</NavLink>
+          <NavLink to="/">Content</NavLink>
+          <NavLink to="/">Content</NavLink>
+          <NavLink to="/">Content</NavLink>
+          <NavLink to="/">Content</NavLink>
         </NavMenu>
         <NavBtn>
           <NavBtnLink to="/">SingIn</NavBtnLink>
