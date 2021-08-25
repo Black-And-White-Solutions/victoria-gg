@@ -1,19 +1,33 @@
-import React, { VoidFunctionComponent, ReactChild, ReactNode } from 'react';
+import React, {
+  VoidFunctionComponent,
+  ReactChild,
+  ReactNode,
+  MouseEventHandler,
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter } from 'react-router-dom';
 // import styled from 'styled-components';
 // import { Grid, Cell } from 'styled-css-grid-v5';
 // import { device } from './assets/mediaSizes.js';
-import NavigationBar from './Navbar/Navigationbar';
+import NavBar from './Navbar/NavBar';
+import DropdownBar from './Navbar/DropdownBar';
 
 type ComponentChilds = {
   children?: ReactChild[] | ReactNode;
 };
 
 const Layout: VoidFunctionComponent<ComponentChilds> = ({ children }) => {
+  const [toggle, setToggle] = useState(false);
+
+  const toggleNavbar: MouseEventHandler = () => {
+    setToggle(!toggle);
+  };
+
   return (
     <BrowserRouter>
-      <NavigationBar />
+      <DropdownBar isOpen={toggle} toggle={toggleNavbar} />
+      <NavBar toggle={toggleNavbar} />
       {children}
     </BrowserRouter>
   );

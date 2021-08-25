@@ -2,33 +2,48 @@ import { NavLink as Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { size } from '../../assets/mediaSizes';
 
-const { tablet, desktopM } = size;
+const { tablet, desktopS } = size;
 
 export const NavBar = styled.nav`
   position: sticky;
   z-index: 10;
   top: 0;
   display: flex;
-  height: 4.5rem;
+  height: 5rem;
   justify-content: space-between;
-  padding: 0.5rem calc((100vw - ${desktopM}) / 2);
-  background: #000;
+  padding: 0.5rem calc((100vw - ${desktopS}) / 2);
+  background: #fff0f0;
 
   @media screen and (max-width: ${tablet}) {
     transition: 0.8s all ease;
   }
 `;
 
+export const Logo = styled.img`
+  display: flex;
+  width: auto;
+  height: 5rem;
+  align-items: center;
+  padding: 0.5rem 0rem;
+`;
+
 export const NavLink = styled(Link)`
   display: flex;
+  height: 100%;
   align-items: center;
   padding: 0 1.5rem;
-  color: #fff;
+  color: #000;
   cursor: pointer;
+  font-style: normal;
+  font-weight: 600;
   text-decoration: none;
 
   &.active {
-    color: #15cdfc;
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(235, 158, 202, 0.5) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 `;
 
@@ -40,7 +55,7 @@ export const MobileIcon = styled.div`
     top: 0;
     right: 0;
     display: block;
-    color: #fff;
+    color: #ff5cb9;
     cursor: pointer;
     font-size: 1.8rem;
     transform: translate(-100%, 60%);
@@ -71,16 +86,18 @@ export const NavBtnLink = styled(Link)`
   border: none;
   margin-left: 1.5rem;
   background: #256ce1;
-  border-radius: 0.25rem;
+  border-radius: 1rem;
   color: #fff;
   cursor: pointer;
+  font-style: normal;
+  font-weight: 600;
   outline: none;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
 
-  &.hover {
+  &:hover {
     background: #fff;
-    color: #010686;
+    color: #ff5cb9;
     transition: all 0.2s ease-in-out;
   }
 `;

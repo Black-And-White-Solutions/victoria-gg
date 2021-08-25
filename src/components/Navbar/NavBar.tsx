@@ -1,11 +1,11 @@
-import React, {
-  /* MouseEventHandler, useState, */ VoidFunctionComponent,
-} from 'react';
+import React, { MouseEventHandler, VoidFunctionComponent } from 'react';
+import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 // import { Grid, Cell } from 'styled-css-grid-v5';
 import { FaBars } from 'react-icons/fa';
 import {
   NavBar,
+  Logo,
   NavLink,
   NavItem,
   MobileIcon,
@@ -13,21 +13,20 @@ import {
   NavBtnLink,
 } from './NavbarElements';
 
-const NavigationBar: VoidFunctionComponent = () => {
-  /* const [toggle, setToggle] = useState(false);
+type NavigationBarProps = {
+  toggle: MouseEventHandler;
+};
 
-	const toggleNavbar: MouseEventHandler = e => {
-		e.preventDefault();
-		setToggle(!toggle);
-	} */
-
+const NavigationBar: VoidFunctionComponent<NavigationBarProps> = ({
+  toggle,
+}) => {
   return (
     <>
       <NavBar>
-        <NavLink to="/">
-          <h1>Logo</h1>
+        <NavLink to="/" exact activeClassName="ignore">
+          <Logo src="https://i.imgur.com/KJiu7wN.png" alt="Victoria G&G" />
         </NavLink>
-        <MobileIcon>
+        <MobileIcon onClick={toggle}>
           <FaBars />
         </MobileIcon>
         <NavMenu>
@@ -46,12 +45,16 @@ const NavigationBar: VoidFunctionComponent = () => {
             <NavLink to="/catalogue">Catálogo</NavLink>
           </NavItem>
           <NavItem>
-            <NavBtnLink to="/singin">Sing In</NavBtnLink>
+            <NavBtnLink to="/singin">Únete</NavBtnLink>
           </NavItem>
         </NavMenu>
       </NavBar>
     </>
   );
+};
+
+NavigationBar.propTypes = {
+  toggle: PropTypes.func.isRequired,
 };
 
 export default NavigationBar;
