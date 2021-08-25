@@ -18,7 +18,7 @@ export const Dropdown = styled.aside<SidebarProps>`
   width: 100%;
   height: 100%;
   align-items: center;
-  background: #0d0d0d;
+  background: #fff0f0;
   opacity: ${({ isOpen }) => (isOpen ? '100%' : '0%')};
   transition: 0.3s ease-in-out;
 `;
@@ -34,7 +34,7 @@ export const Icon = styled.div`
 `;
 
 export const CloseIcon = styled(FaTimes)`
-  color: #fff;
+  color: #ff5cb9;
 `;
 
 export const DropdownWrapper = styled.div`
@@ -56,15 +56,17 @@ export const DropdownLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #000;
   cursor: pointer;
   font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
   list-style: none;
   text-decoration: none;
   transition: 0.2s ease-in-out;
 
-  &.hover {
-    color: #01bf71;
+  &:hover {
+    color: #ff5cb9;
     transition: 0.2s ease-in-out;
   }
 `;
@@ -77,17 +79,20 @@ export const DropdownBtn = styled.div`
 export const DropdownCtA = styled(Link)`
   padding: 1rem 4rem;
   border: none;
-  background: #01bf71;
+  background: #256ce1;
   border-radius: 1rem;
-  color: #010606;
+  color: #fff;
   cursor: pointer;
+  font-style: normal;
+  font-weight: 600;
   outline: none;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
   white-space: nowrap;
 
-  &.hover {
+  &:hover {
     background: #fff;
+    color: #ff5cb9;
     transition: all 0.2s ease-in-out;
   }
 `;
