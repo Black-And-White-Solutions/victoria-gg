@@ -15,7 +15,7 @@ export const NavBar = styled.nav`
 `;
 
 export const NavLink = styled(Link)`
-  color: #000;
+  color: #fff;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -57,7 +57,7 @@ export const NavBtn = styled.nav`
   align-items: center;
   margin-right: 1.5rem;
 
-  @media screen and (max-width = ${tablet}) {
+  @media screen and (max-width: ${tablet}) {
     display: none;
   }
 `;

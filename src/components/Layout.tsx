@@ -1,6 +1,6 @@
 import React, { VoidFunctionComponent, ReactChild, ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 // import styled from 'styled-components';
 // import { Grid, Cell } from 'styled-css-grid-v5';
 // import { device } from './assets/mediaSizes.js';
@@ -12,10 +12,10 @@ type ComponentChilds = {
 
 const Layout: VoidFunctionComponent<ComponentChilds> = ({ children }) => {
   return (
-    <Router>
+    <BrowserRouter>
       <NavigationBar />
       {children}
-    </Router>
+    </BrowserRouter>
   );
 };
 

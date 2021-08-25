@@ -19,14 +19,14 @@ const NavigationBar: VoidFunctionComponent = () => {
         </NavLink>
         <Bars />
         <NavMenu>
-          <NavLink to="/">Content</NavLink>
-          <NavLink to="/">Content</NavLink>
-          <NavLink to="/">Content</NavLink>
-          <NavLink to="/">Content</NavLink>
-          <NavLink to="/">Content</NavLink>
+          <NavLink to="/first">Content</NavLink>
+          <NavLink to="/second">Content</NavLink>
+          <NavLink to="/third">Content</NavLink>
+          <NavLink to="/forth">Content</NavLink>
+          <NavLink to="/fifth">Content</NavLink>
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to="/">SingIn</NavBtnLink>
+          <NavBtnLink to="/singin">Sing In</NavBtnLink>
         </NavBtn>
       </NavBar>
     </>
