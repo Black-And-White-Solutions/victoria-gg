@@ -31,9 +31,11 @@ const NavigationBar: VoidFunctionComponent = () => {
           <FaBars />
         </MobileIcon>
         <NavMenu>
-          <NavLink to="/" exact>
-            Inicio
-          </NavLink>
+          <NavItem>
+            <NavLink to="/" exact>
+              Inicio
+            </NavLink>
+          </NavItem>
           <NavItem>
             <NavLink to="/about">Sobre Nosotros</NavLink>
           </NavItem>

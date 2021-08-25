@@ -5,14 +5,14 @@ import { size } from '../../assets/mediaSizes';
 const { tablet, desktopM } = size;
 
 export const NavBar = styled.nav`
-  height: 4.5rem;
   position: sticky;
-  display: flex;
-  background: #000;
+  z-index: 10;
   top: 0;
+  display: flex;
+  height: 4.5rem;
   justify-content: space-between;
   padding: 0.5rem calc((100vw - ${desktopM}) / 2);
-  z-index: 10;
+  background: #000;
 
   @media screen and (max-width: ${tablet}) {
     transition: 0.8s all ease;
@@ -20,12 +20,12 @@ export const NavBar = styled.nav`
 `;
 
 export const NavLink = styled(Link)`
-  color: #fff;
   display: flex;
   align-items: center;
-  text-decoration: none;
   padding: 0 1.5rem;
+  color: #fff;
   cursor: pointer;
+  text-decoration: none;
 
   &.active {
     color: #15cdfc;
@@ -36,22 +36,23 @@ export const MobileIcon = styled.div`
   display: none;
 
   @media screen and (max-width: ${tablet}) {
-    display: block;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-100%, 75%);
-    font-size: 1.8rem;
+    display: block;
+    color: #fff;
     cursor: pointer;
+    font-size: 1.8rem;
+    transform: translate(-100%, 60%);
   }
 `;
 
 export const NavMenu = styled.ul`
   display: flex;
   align-items: center;
+  margin-right: 1.5rem;
   list-style: none;
   text-align: center;
-  margin-right: 1.5rem;
 
   @media screen and (max-width: ${tablet}) {
     display: none;
@@ -59,24 +60,27 @@ export const NavMenu = styled.ul`
 `;
 
 export const NavItem = styled.li`
-  height: 4.5rem;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const NavBtnLink = styled(Link)`
-  border-radius: 0.25rem;
-  background: #256ce1;
   padding: 0.6rem 1.4rem;
-  margin-left: 1.5rem;
-  color: #fff;
   border: none;
-  outline: none;
+  margin-left: 1.5rem;
+  background: #256ce1;
+  border-radius: 0.25rem;
+  color: #fff;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  outline: none;
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
 
   &.hover {
-    transition: all 0.2s ease-in-out;
     background: #fff;
     color: #010686;
+    transition: all 0.2s ease-in-out;
   }
 `;
