@@ -1,17 +1,22 @@
 import { NavLink as Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { FaBars } from 'react-icons/fa';
 import { size } from '../../assets/mediaSizes';
 
-const { tablet } = size;
+const { tablet, desktopM } = size;
 
 export const NavBar = styled.nav`
   height: 4.5rem;
+  position: sticky;
   display: flex;
   background: #000;
+  top: 0;
   justify-content: space-between;
-  padding: 0.5rem calc((100vw - 1024px) / 2);
+  padding: 0.5rem calc((100vw - ${desktopM}) / 2);
   z-index: 10;
+
+  @media screen and (max-width: ${tablet}) {
+    transition: 0.8s all ease;
+  }
 `;
 
 export const NavLink = styled(Link)`
@@ -19,7 +24,7 @@ export const NavLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   cursor: pointer;
 
   &.active {
@@ -27,9 +32,8 @@ export const NavLink = styled(Link)`
   }
 `;
 
-export const Bars = styled(FaBars)`
+export const MobileIcon = styled.div`
   display: none;
-  color: #fff;
 
   @media screen and (max-width: ${tablet}) {
     display: block;
@@ -42,19 +46,11 @@ export const Bars = styled(FaBars)`
   }
 `;
 
-export const NavMenu = styled.div`
+export const NavMenu = styled.ul`
   display: flex;
   align-items: center;
-  margin-right: -1.5rem;
-
-  @media screen and (max-width: ${tablet}) {
-    display: none;
-  }
-`;
-
-export const NavBtn = styled.nav`
-  display: flex;
-  align-items: center;
+  list-style: none;
+  text-align: center;
   margin-right: 1.5rem;
 
   @media screen and (max-width: ${tablet}) {
@@ -62,10 +58,15 @@ export const NavBtn = styled.nav`
   }
 `;
 
+export const NavItem = styled.li`
+  height: 4.5rem;
+`;
+
 export const NavBtnLink = styled(Link)`
   border-radius: 0.25rem;
   background: #256ce1;
   padding: 0.6rem 1.4rem;
+  margin-left: 1.5rem;
   color: #fff;
   border: none;
   outline: none;

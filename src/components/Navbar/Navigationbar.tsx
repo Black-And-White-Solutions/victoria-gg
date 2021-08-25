@@ -1,33 +1,52 @@
-import React, { VoidFunctionComponent } from 'react';
+import React, {
+  /* MouseEventHandler, useState, */ VoidFunctionComponent,
+} from 'react';
 // import styled from 'styled-components';
 // import { Grid, Cell } from 'styled-css-grid-v5';
+import { FaBars } from 'react-icons/fa';
 import {
   NavBar,
   NavLink,
-  Bars,
+  NavItem,
+  MobileIcon,
   NavMenu,
-  NavBtn,
   NavBtnLink,
 } from './NavbarElements';
 
 const NavigationBar: VoidFunctionComponent = () => {
+  /* const [toggle, setToggle] = useState(false);
+
+	const toggleNavbar: MouseEventHandler = e => {
+		e.preventDefault();
+		setToggle(!toggle);
+	} */
+
   return (
     <>
       <NavBar>
         <NavLink to="/">
           <h1>Logo</h1>
         </NavLink>
-        <Bars />
+        <MobileIcon>
+          <FaBars />
+        </MobileIcon>
         <NavMenu>
-          <NavLink to="/first">Content</NavLink>
-          <NavLink to="/second">Content</NavLink>
-          <NavLink to="/third">Content</NavLink>
-          <NavLink to="/forth">Content</NavLink>
-          <NavLink to="/fifth">Content</NavLink>
+          <NavLink to="/" exact>
+            Inicio
+          </NavLink>
+          <NavItem>
+            <NavLink to="/about">Sobre Nosotros</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/howItWorks">Cómo funciona</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/catalogue">Catálogo</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavBtnLink to="/singin">Sing In</NavBtnLink>
+          </NavItem>
         </NavMenu>
-        <NavBtn>
-          <NavBtnLink to="/singin">Sing In</NavBtnLink>
-        </NavBtn>
       </NavBar>
     </>
   );
