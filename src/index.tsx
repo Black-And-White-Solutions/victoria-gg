@@ -9,10 +9,14 @@ const GlobalStyles = createGlobalStyle`
 	  padding: 0;
 		margin: 0;
 	}
-	body {
+
+		body {
+		background-color: rgb(0, 0, 0);
 	  color: rgb(0, 0, 0);
-		font-family: 'Inter', 'Lato', sans-serif;
-		-webkit-font-smoothing: antialiased;
+		font-family: 'Alegreya Sans', 'Lato', sans-serif, -apple-system, BlinkMacSystemFont,
+	    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+	    'Droid Sans', 'Helvetica Neue';
+	  -webkit-font-smoothing: antialiased;
 	  -moz-osx-font-smoothing: grayscale;
 	  font-style: normal;
 	  font-weight: normal;
