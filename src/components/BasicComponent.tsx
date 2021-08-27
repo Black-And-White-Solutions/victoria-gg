@@ -1,6 +1,9 @@
 import React, { VoidFunctionComponent, ReactChild, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { size } from '../assets/mediaSizes';
+
+const { desktopS, tablet, mobileM } = size;
 
 type ComponentProps = {
   buttonChildren: ReactChild[] | ReactNode;
@@ -12,7 +15,7 @@ type ComponentProps = {
 const Component = styled.div`
   display: grid;
   width: 100%;
-  padding: 4rem 2rem;
+  padding: 2.5rem 2rem;
   gap: 1.5rem;
   grid-template-areas:
     'title content'
@@ -20,10 +23,31 @@ const Component = styled.div`
     'button content';
   grid-template-columns: 2fr 3fr;
   grid-template-rows: 1fr 3fr 1fr;
+
+  @media screen and (min-width: ${tablet}) and (max-width: calc(${desktopS} - 1px)) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: calc(${tablet} - 1px)) {
+    grid-template-areas:
+      'title'
+      'description'
+      'content'
+      'button';
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  @media screen and (max-width: ${tablet}) {
+    font-size: 12px;
+  }
+
+  @media screen and (max-width: ${mobileM}) {
+    font-size: 10px;
+  }
 `;
 
 const Title = styled.h1`
-  margin: 0;
   color: #ff5cb9;
   font-family: 'Dancing Script', cursive;
   font-style: normal;
@@ -32,13 +56,12 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-  margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   font-weight: 500;
   grid-area: description;
 `;
 
-const Content = styled(React.Fragment)`
+const Content = styled.div`
   grid-area: content;
 `;
 
