@@ -1,11 +1,9 @@
 import React, { VoidFunctionComponent, ReactChild, ReactNode } from 'react';
-import { NavLink as Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 type ComponentProps = {
-  buttonLink?: string;
-  buttonPlaceholder: string;
+  buttonChildren: ReactChild[] | ReactNode;
   children?: ReactChild[] | ReactNode;
   description: string;
   title: string;
@@ -40,33 +38,12 @@ const Description = styled.p`
   grid-area: description;
 `;
 
-const Button = styled.button`
-  width: 50%;
-  height: 4rem;
-  border: none;
-  margin: auto 0;
-  background: #f11593;
-  border-radius: 45px 0px;
-  grid-area: button;
-  outline: none;
-`;
-
-const ButtonLink = styled(Link)`
-  color: #fff;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-`;
-
 const Content = styled(React.Fragment)`
   grid-area: content;
 `;
 
 const BasicComponent: VoidFunctionComponent<ComponentProps> = ({
-  buttonLink,
-  buttonPlaceholder,
+  buttonChildren,
   children,
   description,
   title,
@@ -75,29 +52,19 @@ const BasicComponent: VoidFunctionComponent<ComponentProps> = ({
     <Component>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <Button>
-        <ButtonLink
-          to={{
-            pathname: buttonLink,
-          }}>
-          {buttonPlaceholder}
-        </ButtonLink>
-      </Button>
+      {buttonChildren}
       <Content>{children}</Content>
     </Component>
   );
 };
 
 BasicComponent.defaultProps = {
-  buttonLink: '/',
-  buttonPlaceholder: 'Placeholder',
   description: 'Description',
   title: 'Title',
 };
 
 BasicComponent.propTypes = {
-  buttonLink: PropTypes.string,
-  buttonPlaceholder: PropTypes.string.isRequired,
+  buttonChildren: PropTypes.node,
   children: PropTypes.node,
   description: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
