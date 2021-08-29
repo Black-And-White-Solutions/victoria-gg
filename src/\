@@ -67,8 +67,8 @@ const Title = styled.h1<InvertedConditionProps>`
   font-family: 'Dancing Script', cursive;
   font-style: normal;
   font-weight: 700;
-  grid-area: title;
   text-align: start;
+  grid-area: title;
 
   ${props =>
     props.isInverted &&
@@ -81,26 +81,25 @@ const Description = styled.p<InvertedConditionProps>`
   font-size: 1.2em;
   font-weight: 500;
   grid-area: description;
-  text-align: ${props => ( !props.isInverted ? 'left' : 'right')};
+  text-align: ${props => (!props.isInverted ? 'left' : 'right')};
 `;
 
-const Button = styled.div<InvertedConditionProps>`
-  display: flex;
+const Button = styled.div`
   width: 100%;
+  display: flex;
   grid-area: button;
   place-content: center
-    ${props => ( !props.isInverted ? 'flex-start' : 'flex-end')};
+    ${props => (!props.isInverted ? 'flex-start' : 'flex-end')};
 
   @media screen and (max-width: ${tablet}) {
     place-content: center center;
   }
 `;
 
-const Content = styled.div<InvertedConditionProps>`
-  display: flex;
+const Content = styled.div`
   grid-area: content;
-  place-content: center
-    ${props => ( !props.isInverted ? 'flex-end' : 'flex-start')};
+  display: flex;
+  place-content: center flex-end;
 
   @media screen and (max-width: ${tablet}) {
     place-content: center center;
@@ -118,15 +117,15 @@ const BasicComponent: VoidFunctionComponent<ComponentProps> = ({
     <Component isInverted={inverted}>
       <Title isInverted={inverted}>{title}</Title>
       <Description isInverted={inverted}>{description}</Description>
-      <Button isInverted={inverted}>{buttonChildren}</Button>
-      <Content isInverted={inverted}>{children}</Content>
+      <Button>{buttonChildren}</Button>
+      <Content>{children}</Content>
     </Component>
   );
 };
 
 BasicComponent.defaultProps = {
   description: 'Description',
-  inverted: false,
+  inverted: true,
   title: 'Title',
 };
 

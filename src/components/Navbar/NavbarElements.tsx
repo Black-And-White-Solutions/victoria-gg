@@ -12,7 +12,6 @@ export const NavBar = styled.nav`
   height: 5rem;
   justify-content: space-between;
   padding: 0.5rem calc((100vw - ${desktopS}) / 2);
-  background: #fff0f0;
 
   @media screen and (max-width: ${tablet}) {
     transition: 0.8s all ease;
