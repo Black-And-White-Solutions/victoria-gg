@@ -87,9 +87,9 @@ const Description = styled.p<InvertedConditionProps>`
 const Button = styled.div<InvertedConditionProps>`
   display: flex;
   width: 100%;
+  align-items: center;
+  justify-content: ${props => ( !props.isInverted ? 'flex-start' : 'flex-end')};
   grid-area: button;
-  place-content: center
-    ${props => ( !props.isInverted ? 'flex-start' : 'flex-end')};
 
   @media screen and (max-width: ${tablet}) {
     place-content: center center;
@@ -98,9 +98,9 @@ const Button = styled.div<InvertedConditionProps>`
 
 const Content = styled.div<InvertedConditionProps>`
   display: flex;
+  align-items: center;
+  justify-content: ${props => ( !props.isInverted ? 'flex-end' : 'flex-start')};
   grid-area: content;
-  place-content: center
-    ${props => ( !props.isInverted ? 'flex-end' : 'flex-start')};
 
   @media screen and (max-width: ${tablet}) {
     place-content: center center;

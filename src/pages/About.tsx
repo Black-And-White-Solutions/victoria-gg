@@ -7,6 +7,10 @@ import listOfAbout from '../assets/JSONs/About.json';
 
 const { desktopS, tablet, mobileS } = size;
 
+type InvertedConditionProps = {
+  isInverted?: boolean;
+};
+
 const Container = styled.div`
   display: grid;
   justify-content: center;
@@ -14,7 +18,7 @@ const Container = styled.div`
   grid-auto-flow: row;
 `;
 
-const ButtonLink = styled(Link)`
+const ButtonLink = styled(Link)<InvertedConditionProps>`
   display: flex;
   width: 50%;
   height: 4rem;
@@ -23,7 +27,7 @@ const ButtonLink = styled(Link)`
   border: none;
   margin: auto 0;
   background: #f11593;
-  border-radius: 45px 0px;
+  border-radius: ${props => ( !props.isInverted ? '45px 0px' : '0px 45px')};
   color: #fff;
   font-style: normal;
   font-weight: 600;
@@ -36,10 +40,10 @@ const ButtonLink = styled(Link)`
   }
 `;
 
-const Image = styled.img`
+const Image = styled.img<InvertedConditionProps>`
   width: 90%;
   height: fit-content;
-  border-radius: 75px 0px;
+  border-radius: ${props => ( !props.isInverted ? '75px 0px' : '0px 75px')};
 
   @media screen and (max-width: ${tablet}) {
     width: 60%;
@@ -53,13 +57,16 @@ const About: VoidFunctionComponent = () => {
     aboutCards.push(
       <BasicComponent
         buttonChildren={
-          <ButtonLink to={item.buttonLink}>{item.buttonPlaceholder}</ButtonLink>
+          <ButtonLink to={item.buttonLink} isInverted={indexIsEven}>
+            {item.buttonPlaceholder}
+          </ButtonLink>
         }
         description={item.description}
         inverted={!indexIsEven}
         key={index}
         title={item.title}>
         <Image
+          isInverted={indexIsEven}
           srcSet={`${item.imgSrcSetL} 640w,
 									 ${item.imgSrcSetM} 320w,
 									 ${item.imgSrcSetS} 160w`}
