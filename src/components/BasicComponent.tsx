@@ -1,4 +1,5 @@
 import React, { VoidFunctionComponent, ReactChild, ReactNode } from 'react';
+import { NavLink as Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { size } from '../assets/mediaSizes';
@@ -26,7 +27,7 @@ const Component = styled.div<InvertedConditionProps>`
     'title content'
     'description content'
     'button content';
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: ${props => !props.isInverted ? '2fr 3fr' : '3fr 2fr'};
   grid-template-rows: 1fr 3fr 1fr;
 
   ${props =>
@@ -36,14 +37,14 @@ const Component = styled.div<InvertedConditionProps>`
         'content title'
         'content description'
         'content button';
-      grid-template-columns: 3fr 2fr;
     `}
 
-  @media screen and (min-width: ${tablet}) and (max-width: calc(${desktopS} - 1px)) {
+  @media screen and (max-width: calc(${desktopS})) {
     font-size: 14px;
   }
 
-  @media screen and (max-width: calc(${tablet} - 1px)) {
+  @media screen and (max-width: calc(${tablet})) {
+    font-size: 12px;
     grid-template-areas:
       'title'
       'description'
@@ -53,11 +54,7 @@ const Component = styled.div<InvertedConditionProps>`
     grid-template-rows: auto;
   }
 
-  @media screen and (max-width: ${tablet}) {
-    font-size: 12px;
-  }
-
-  @media screen and (max-width: ${mobileM}) {
+  @media screen and (max-width: calc(${mobileM} - 1px)) {
     font-size: 10px;
   }
 `;
@@ -123,6 +120,34 @@ const BasicComponent: VoidFunctionComponent<ComponentProps> = ({
     </Component>
   );
 };
+
+export const ButtonLink = styled(Link)<InvertedConditionProps>`
+  display: flex;
+  width: 50%;
+  height: 5rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  margin: auto 0;
+  background: #f11593;
+  border-radius: ${props => ( !props.isInverted ? '45px 0px' : '0px 45px')};
+  color: #fff;
+  font-style: normal;
+  font-weight: 600;
+  outline: none;
+  text-decoration: none;
+
+  @media screen and (max-width: ${tablet}) {
+    width: 12rem;
+    place-self: center center;
+  }
+`;
+
+export const Image = styled.img<InvertedConditionProps>`
+  width: 100%;
+  height: fit-content;
+  border-radius: ${props => ( !props.isInverted ? '75px 0px' : '0px 75px')};
+`;
 
 BasicComponent.defaultProps = {
   description: 'Description',
