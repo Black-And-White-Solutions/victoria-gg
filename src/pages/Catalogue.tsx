@@ -5,7 +5,7 @@ import BasicComponent, {
   Image,
 } from '../components/BasicComponent';
 import { size } from '../assets/mediaSizes';
-import listOfAbout from '../assets/JSONs/About.json';
+import listOfCatalogue from '../assets/JSONs/Catalogue.json';
 
 const { desktopS, tablet, mobileS } = size;
 
@@ -16,9 +16,9 @@ const Container = styled.div`
   grid-auto-flow: row;
 `;
 
-const About: VoidFunctionComponent = () => {
+const Catalogue: VoidFunctionComponent = () => {
   const aboutCards: ReactChild[] = [];
-  listOfAbout.forEach((item, index) => {
+  listOfCatalogue.forEach((item, index) => {
     const indexIsEven: boolean = index % 2 === 0;
     aboutCards.push(
       <BasicComponent
@@ -46,4 +46,4 @@ const About: VoidFunctionComponent = () => {
   return <Container>{aboutCards}</Container>;
 };
 
-export default About;
+export default Catalogue;
