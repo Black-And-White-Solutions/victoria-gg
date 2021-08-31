@@ -65,6 +65,14 @@ export const DropdownLink = styled(Link)`
   text-decoration: none;
   transition: 0.2s ease-in-out;
 
+  &.active {
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(235, 158, 202, 0.5) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
   &:hover {
     color: #ff5cb9;
     transition: 0.2s ease-in-out;

@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
 		margin: 0;
 	}
 	body {
-		background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(235, 158, 202, 0.25) 100%), #F8F8F8;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(235, 158, 202, 0.15) 100%), #F8F8F8;
 	  color: rgb(0, 0, 0);
 		font-family: 'Inter', 'Dancing Script', sans-serif, cursive;
 		-webkit-font-smoothing: antialiased;

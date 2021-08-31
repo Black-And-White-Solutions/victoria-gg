@@ -28,7 +28,7 @@ const Component = styled.div<InvertedConditionProps>`
     'description content'
     'button content';
   grid-template-columns: ${props => !props.isInverted ? '2fr 3fr' : '3fr 2fr'};
-  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-rows: auto;
 
   ${props =>
     props.isInverted &&
@@ -75,9 +75,13 @@ const Title = styled.h1<InvertedConditionProps>`
 `;
 
 const Description = styled.p<InvertedConditionProps>`
+  display: box;
+  overflow: hidden;
+  box-orient: vertical;
   font-size: 1.2em;
-  font-weight: 500;
+  font-weight: 400;
   grid-area: description;
+  -webkit-line-clamp: 14;
   text-align: ${props => ( !props.isInverted ? 'left' : 'right')};
 `;
 

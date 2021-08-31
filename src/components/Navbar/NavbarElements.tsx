@@ -41,7 +41,7 @@ export const NavLink = styled(Link)`
   &.active {
     background: radial-gradient(
       50% 50% at 50% 50%,
-      rgba(235, 158, 202, 0.5) 0%,
+      rgba(235, 158, 202, 0.2) 0%,
       rgba(255, 255, 255, 0) 100%
     );
   }
