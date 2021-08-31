@@ -18,7 +18,7 @@ export const Dropdown = styled.aside<SidebarProps>`
   width: 100%;
   height: 100%;
   align-items: center;
-  background: #fff0f0;
+  background: #fff;
   opacity: ${({ isOpen }) => (isOpen ? '100%' : '0%')};
   transition: 0.3s ease-in-out;
 `;
@@ -68,7 +68,7 @@ export const DropdownLink = styled(Link)`
   &.active {
     background: radial-gradient(
       50% 50% at 50% 50%,
-      rgba(235, 158, 202, 0.5) 0%,
+      rgba(235, 158, 202, 0.3) 0%,
       rgba(255, 255, 255, 0) 100%
     );
   }
@@ -85,20 +85,28 @@ export const DropdownBtn = styled.div`
 `;
 
 export const DropdownCtA = styled(Link)`
-  padding: 1rem 4rem;
+  display: flex;
+  width: 50%;
+  height: 80%;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
   border: none;
   background: #256ce1;
   border-radius: 1rem;
   color: #fff;
   cursor: pointer;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 600;
+  justify-self: center;
   outline: none;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
   white-space: nowrap;
 
   &:hover {
+    border: 1px solid #ff5cb9;
     background: #fff;
     color: #ff5cb9;
     transition: all 0.2s ease-in-out;

@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 import App from './App';
+import { size } from './assets/mediaSizes';
+
+const { tablet } = size;
 
 const GlobalStyles = createGlobalStyle`
 	* {
@@ -18,6 +21,12 @@ const GlobalStyles = createGlobalStyle`
 	  font-style: normal;
 	  font-weight: normal;
 	  word-wrap: normal;
+
+		@media screen and (max-width: ${tablet}) {
+			::-webkit-scrollbar {
+				display: none;
+			}
+		}
 	}
 	p {
 		text-align: justify;
