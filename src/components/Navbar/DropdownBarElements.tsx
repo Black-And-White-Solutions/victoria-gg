@@ -44,7 +44,7 @@ export const DropdownWrapper = styled.div`
 export const DropdownMenu = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(6, 5rem);
+  grid-template-rows: repeat(4, 5rem);
   text-align: center;
 
   @media screen and (max-width: ${mobileL}) {
@@ -80,17 +80,15 @@ export const DropdownLink = styled(Link)`
 `;
 
 export const DropdownBtn = styled.div`
+  position: absolute;
+  bottom: 2.4rem;
   display: flex;
+  width: 100%;
   justify-content: center;
 `;
 
 export const DropdownCtA = styled(Link)`
-  display: flex;
-  width: 50%;
-  height: 80%;
-  align-items: center;
-  align-self: center;
-  justify-content: center;
+  padding: 1rem 4rem;
   border: none;
   background: #256ce1;
   border-radius: 1rem;

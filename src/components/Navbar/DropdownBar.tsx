@@ -7,6 +7,7 @@ import {
   DropdownWrapper,
   DropdownMenu,
   DropdownLink,
+  DropdownBtn,
   DropdownCtA,
 } from './DropdownBarElements';
 
@@ -38,10 +39,12 @@ const DropdownBar: VoidFunctionComponent<DropdownBarProps> = ({
           <DropdownLink to="/catalogue" onClick={toggle}>
             Catálogo
           </DropdownLink>
+        </DropdownMenu>
+        <DropdownBtn>
           <DropdownCtA to="/singIn" onClick={toggle}>
             Únete
           </DropdownCtA>
-        </DropdownMenu>
+        </DropdownBtn>
       </DropdownWrapper>
     </Dropdown>
   );
