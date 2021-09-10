@@ -1,17 +1,8 @@
 import React, { VoidFunctionComponent } from 'react';
-import styled from 'styled-components';
-
-const Text = styled.div`
-  display: flex;
-  height: calc(100vh - 5rem);
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: 700;
-`;
+import Carousel from '../components/Caruosel/Carousel';
 
 const Home: VoidFunctionComponent = () => {
-  return <Text>Home</Text>;
+  return <Carousel />;
 };
 
 export default Home;

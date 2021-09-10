@@ -1,5 +1,5 @@
 import React, { ReactChild, VoidFunctionComponent } from 'react';
-import styled from 'styled-components';
+import Container from '../components/Container';
 import BasicComponent, {
   ButtonLink,
   Image,
@@ -7,14 +7,7 @@ import BasicComponent, {
 import { size } from '../assets/mediaSizes';
 import listOfCatalogue from '../assets/JSONs/Catalogue.json';
 
-const { desktopS, tablet, mobileS } = size;
-
-const Container = styled.div`
-  display: grid;
-  justify-content: center;
-  padding: 0 calc((100vw - ${desktopS}) / 2);
-  grid-auto-flow: row;
-`;
+const { tablet, mobileS } = size;
 
 const Catalogue: VoidFunctionComponent = () => {
   const aboutCards: ReactChild[] = [];
