@@ -1,0 +1,22 @@
+[
+  {
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "image": "https://i.imgur.com/Ql6vzlZl.jpg",
+    "title": "Primer slider"
+  },
+  {
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "image": "https://i.imgur.com/Ql6vzlZl.jpg",
+    "title": "Primer slider"
+  },
+  {
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "image": "https://i.imgur.com/Ql6vzlZl.jpg",
+    "title": "Segundo slider"
+  },
+  {
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "image": "https://i.imgur.com/Ql6vzlZl.jpg",
+    "title": "Tercer slider"
+  }
+]
