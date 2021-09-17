@@ -4,7 +4,7 @@ import Container from '../components/Container';
 
 const Home: VoidFunctionComponent = () => {
   return (
-    <Container display={'flex'}>
+    <Container>
       <Carousel />
     </Container>
   );

@@ -31,7 +31,7 @@ const Carousel: VoidFunctionComponent = () => {
       </Slide>,
     );
     thumbnailsArray.push(
-      <ThumbnailSlide>
+      <ThumbnailSlide className={index === 1 ? 'active' : ''}>
         <ThumbnailInfo>
           <ThumbnailTitle>Title</ThumbnailTitle>
           <ThumbnailDescription>{item.description}</ThumbnailDescription>
