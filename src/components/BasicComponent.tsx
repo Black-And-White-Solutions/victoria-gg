@@ -59,7 +59,7 @@ const Component = styled.div<InvertedConditionProps>`
   }
 `;
 
-const Title = styled.h1<InvertedConditionProps>`
+const TitleArea = styled.h1<InvertedConditionProps>`
   color: #ff5cb9;
   font-family: 'Dancing Script', cursive;
   font-style: normal;
@@ -74,10 +74,9 @@ const Title = styled.h1<InvertedConditionProps>`
     `}
 `;
 
-const Description = styled.p<InvertedConditionProps>`
+const DescriptionArea = styled.p<InvertedConditionProps>`
   display: box;
   overflow: hidden;
-  box-orient: vertical;
   font-size: 1.2em;
   font-weight: 400;
   grid-area: description;
@@ -85,7 +84,7 @@ const Description = styled.p<InvertedConditionProps>`
   text-align: ${props => ( !props.isInverted ? 'left' : 'right')};
 `;
 
-const Button = styled.div<InvertedConditionProps>`
+const ButtonArea = styled.div<InvertedConditionProps>`
   display: flex;
   width: 100%;
   align-items: center;
@@ -97,7 +96,7 @@ const Button = styled.div<InvertedConditionProps>`
   }
 `;
 
-const Content = styled.div<InvertedConditionProps>`
+const ContentArea = styled.div<InvertedConditionProps>`
   display: flex;
   align-items: center;
   justify-content: ${props => ( !props.isInverted ? 'flex-end' : 'flex-start')};
@@ -108,24 +107,7 @@ const Content = styled.div<InvertedConditionProps>`
   }
 `;
 
-const BasicComponent: VoidFunctionComponent<ComponentProps> = ({
-  buttonChildren,
-  children,
-  description,
-  inverted,
-  title,
-}) => {
-  return (
-    <Component isInverted={inverted}>
-      <Title isInverted={inverted}>{title}</Title>
-      <Description isInverted={inverted}>{description}</Description>
-      <Button isInverted={inverted}>{buttonChildren}</Button>
-      <Content isInverted={inverted}>{children}</Content>
-    </Component>
-  );
-};
-
-export const ButtonLink = styled(Link)<InvertedConditionProps>`
+const baseButtonStyles = css<InvertedConditionProps>`
   display: flex;
   width: 50%;
   height: 5rem;
@@ -147,11 +129,36 @@ export const ButtonLink = styled(Link)<InvertedConditionProps>`
   }
 `;
 
+export const ButtonHTML = styled.button`
+  ${baseButtonStyles}
+`;
+
+export const ButtonLink = styled(Link)`
+  ${baseButtonStyles}
+`;
+
 export const Image = styled.img<InvertedConditionProps>`
   width: 100%;
   height: fit-content;
   border-radius: ${props => ( !props.isInverted ? '75px 0px' : '0px 75px')};
 `;
+
+const BasicComponent: VoidFunctionComponent<ComponentProps> = ({
+  buttonChildren,
+  children,
+  description,
+  inverted,
+  title,
+}) => {
+  return (
+    <Component isInverted={inverted}>
+      <TitleArea isInverted={inverted}>{title}</TitleArea>
+      <DescriptionArea isInverted={inverted}>{description}</DescriptionArea>
+      <ButtonArea isInverted={inverted}>{buttonChildren}</ButtonArea>
+      <ContentArea isInverted={inverted}>{children}</ContentArea>
+    </Component>
+  );
+};
 
 BasicComponent.defaultProps = {
   description: 'Description',
