@@ -1,9 +1,87 @@
 import React, { VoidFunctionComponent } from 'react';
 import styled from 'styled-components';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const JSON = {
   title: 'Genera tus propios ingresos en una forma innovadora',
-  thumbnail: 'https://i.imgur.com/5ecsIlls.jpg',
+  author: {
+    name: 'Author Name',
+    details: 'Author Details',
+    thumbnail: 'https://i.imgur.com/5ecsIlls.jpg',
+  },
+  content: `
+---
+
+# h1 Heading 8-)
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
+
+
+## Horizontal Rules
+
+___
+
+---
+
+***
+
+
+## Typographic replacements
+
+Enable typographer option to see result.
+
+(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+
+test.. test... test..... test?..... test!....
+
+!!!!!! ???? ,,  -- ---
+
+"Smartypants, double quotes" and 'single quotes'
+
+
+## Emphasis
+
+**This is bold text**
+
+__This is bold text__
+
+*This is italic text*
+
+_This is italic text_
+
+~~Strikethrough~~
+
+## Blockquotes
+
+
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
+
+# GFM
+
+## Autolink literals
+
+www.example.com, https://example.com, and contact@example.com.
+
+## Strikethrough
+
+~one~ or ~~two~~ tildes.
+
+## Table
+
+| a | b  |  c |  d  |
+| - | :- | -: | :-: |
+
+## Tasklist
+
+* [ ] to do
+* [x] done
+`,
 };
 
 const Padding = styled.div`
@@ -37,11 +115,16 @@ const BlogEntry: VoidFunctionComponent = () => {
   return (
     <Padding>
       <Title>{JSON.title}</Title>
+      <Padding>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {JSON.content}
+        </ReactMarkdown>
+      </Padding>
       <Container>
-        <Thumbnail src={JSON.thumbnail} alt="Thumbnail" />
+        <Thumbnail src={JSON.author.thumbnail} alt="Thumbnail" />
         <div>
-          <h2>First Name</h2>
-          <p>Extra Info</p>
+          <h2>{JSON.author.name}</h2>
+          <p>{JSON.author.details}</p>
         </div>
       </Container>
     </Padding>
