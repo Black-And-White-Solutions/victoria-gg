@@ -19,10 +19,17 @@ export const CarouselWrapper = styled(Carousel)`
   grid-template-columns: fit-content 1fr;
 `;
 
+export const Image = styled.img`
+  width: 632px;
+  height: auto;
+`;
+
 export const ImageSlide = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
+  width: inherit;
+  height: inherit;
   transform: translate(-50%, -50%);
 `;
 

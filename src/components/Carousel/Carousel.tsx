@@ -10,6 +10,7 @@ import { Slide, CarouselContext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import {
   CarouselWrapper,
+  Image,
   ImageSlide,
   SliderProvider,
   Thumbnail,
@@ -66,7 +67,7 @@ const Carousel: VoidFunctionComponent = () => {
     carouselSlides.push(
       <Slide index={index} key={`Slide${index + 1}`}>
         <ImageSlide key={`ImageSlide${index + 1}`}>
-          <img
+          <Image
             src={item.image}
             alt={`Image N°${index + 1}`}
             key={`Image${index + 1}`}
