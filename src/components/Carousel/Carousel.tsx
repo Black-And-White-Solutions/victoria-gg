@@ -1,68 +1,64 @@
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import React, { ReactChild, VoidFunctionComponent, useEffect, useContext, useState } from 'react';
-import { Slider, Slide, CarouselContext } from 'pure-react-carousel';
+import React, {
+  ReactChild,
+  VoidFunctionComponent,
+  useEffect,
+  useContext,
+  useState,
+} from 'react';
+import { Slide, CarouselContext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import {
-  CarouselProvider,
   CarouselWrapper,
   ImageSlide,
+  SliderProvider,
   Thumbnail,
   ThumbnailDescription,
   ThumbnailInfo,
+  ThumbnailsProvider,
   ThumbnailSlide,
   ThumbnailTitle,
 } from './CarouselComponents';
 import listOfSlides from '../../assets/JSONs/Home.json';
 
 type BaseThumbnailsProviderProps = {
-	listOfSlides: any[];
-}
+  listOfSlides: any[];
+};
 
-const BaseThumbnailsProvider: VoidFunctionComponent<BaseThumbnailsProviderProps> = ({ listOfSlides }) => {
-	const carouselContext = useContext(CarouselContext);
-	const [currentSlide, setCurrentSlide] = useState(carouselContext.state.currentSlide);
-	useEffect(() => {
-		const onChange = () => {
-			setCurrentSlide(carouselContext.state.currentSlide);
-		}
-		carouselContext.subscribe(onChange);
-		return () => carouselContext.unsubscribe(onChange);
-	}, [carouselContext])
-  const thumbnailsArray: ReactChild[] = [];
-  listOfSlides.forEach((item, index) => {
-    thumbnailsArray.push(
-      <ThumbnailSlide className={index === currentSlide ? 'active' : ''}>
-        <ThumbnailInfo>
-          <ThumbnailTitle>Title</ThumbnailTitle>
-          <ThumbnailDescription>{item.description}</ThumbnailDescription>
-        </ThumbnailInfo>
-        <Thumbnail
-          src={item.image}
-          alt={`Thumbnail N°${index + 1}`}
-          key={`Thumbnail${index + 1}`}
-        />
-      </ThumbnailSlide>,
+const BaseThumbnailsProvider: VoidFunctionComponent<BaseThumbnailsProviderProps> =
+  ({ listOfSlides }) => {
+    const carouselContext = useContext(CarouselContext);
+    const [currentSlide, setCurrentSlide] = useState(
+      carouselContext.state.currentSlide,
     );
-  });
-	return (
-		<div>{thumbnailsArray}</div>
-	);
-}
+
+    useEffect(() => {
+      const onChange = () => {
+        setCurrentSlide(carouselContext.state.currentSlide);
+      };
+      carouselContext.subscribe(onChange);
+      return () => carouselContext.unsubscribe(onChange);
+    }, [carouselContext]);
+
+    const thumbnailsArray: ReactChild[] = [];
+    listOfSlides.forEach((item, index) => {
+      thumbnailsArray.push(
+        <ThumbnailSlide className={index === currentSlide ? 'active' : ''}>
+          <ThumbnailInfo>
+            <ThumbnailTitle>{item.title}</ThumbnailTitle>
+            <ThumbnailDescription>{item.description}</ThumbnailDescription>
+          </ThumbnailInfo>
+          <Thumbnail src={item.image} key={`Thumbnail${index + 1}`} />
+        </ThumbnailSlide>,
+      );
+    });
+
+    return <>{thumbnailsArray}</>;
+  };
 
 BaseThumbnailsProvider.propTypes = {
-	listOfSlides:	PropTypes.array.isRequired,
-}
-
-const ThumbnailsProvider = styled(BaseThumbnailsProvider)`
-  display: flex;
-  width: 360px;
-  height: 100%;
-  flex-direction: column;
-  gap: 0.5rem;
-  grid-area: thumbnails;
-  grid-auto-flow: row;
-`;
+  listOfSlides: PropTypes.array.isRequired,
+};
 
 const Carousel: VoidFunctionComponent = () => {
   const carouselSlides: ReactChild[] = [];
@@ -81,17 +77,17 @@ const Carousel: VoidFunctionComponent = () => {
   });
 
   return (
-    <CarouselWrapper>
-      <CarouselProvider
-        infinite={true}
-        isPlaying={true}
-        naturalSlideWidth={648}
-        naturalSlideHeight={434}
-        totalSlides={carouselSlides.length}
-      >
-        <Slider>{carouselSlides}</Slider>
-				<ThumbnailsProvider listOfSlides={listOfSlides} />
-      </CarouselProvider>
+    <CarouselWrapper
+      infinite={true}
+      isPlaying={true}
+      naturalSlideWidth={648}
+      naturalSlideHeight={434}
+      totalSlides={carouselSlides.length}
+    >
+      <SliderProvider>{carouselSlides} </SliderProvider>
+      <ThumbnailsProvider>
+        <BaseThumbnailsProvider listOfSlides={listOfSlides} />
+      </ThumbnailsProvider>
     </CarouselWrapper>
   );
 };

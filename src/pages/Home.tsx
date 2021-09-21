@@ -1,12 +1,12 @@
 import React, { VoidFunctionComponent } from 'react';
 import Carousel from '../components/Carousel/Carousel';
-import Container from '../components/Container';
+import { HeightContainer } from '../components/Container';
 
 const Home: VoidFunctionComponent = () => {
   return (
-    <Container>
+    <HeightContainer display={'flex'}>
       <Carousel />
-    </Container>
+    </HeightContainer>
   );
 };
 

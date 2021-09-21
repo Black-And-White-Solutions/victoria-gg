@@ -1,17 +1,22 @@
 import styled from 'styled-components';
-import { CarouselProvider as Carousel } from 'pure-react-carousel';
+import { CarouselProvider as Carousel, Slider } from 'pure-react-carousel';
 
-export const CarouselProvider = styled(Carousel)`
-  width: 648px;
+type ThumbnailImage = {
+  src: string;
+};
+
+export const SliderProvider = styled(Slider)`
+  width: 632px;
   height: 434px;
   grid-area: carousel;
 `;
 
-export const CarouselWrapper = styled.div`
+export const CarouselWrapper = styled(Carousel)`
   display: grid;
+  padding: 0 2rem;
   gap: 1rem;
   grid-template-areas: 'carousel thumbnails';
-  grid-template-columns: 648px 1fr;
+  grid-template-columns: fit-content 1fr;
 `;
 
 export const ImageSlide = styled.div`
@@ -21,10 +26,13 @@ export const ImageSlide = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const Thumbnail = styled.img`
-  width: auto;
-  height: 90%;
-  padding: 0 0.5rem;
+export const Thumbnail = styled.div<ThumbnailImage>`
+  width: 90px;
+  height: 90px;
+  margin: 0 0.5rem;
+  background-image: url(${props => props.src});
+  background-position: center;
+  background-size: cover;
 `;
 
 export const ThumbnailDescription = styled.div`
@@ -36,10 +44,19 @@ export const ThumbnailDescription = styled.div`
 
 export const ThumbnailInfo = styled.div`
   display: flex;
-  width: auto;
+  width: 16rem;
   height: 85%;
   flex-direction: column;
   padding-left: 2rem;
+`;
+
+export const ThumbnailsProvider = styled.div`
+  display: grid;
+  width: 344px;
+  height: 100%;
+  gap: 0.5rem;
+  grid-area: thumbnails;
+  grid-auto-flow: row;
 `;
 
 export const ThumbnailSlide = styled.div`
@@ -71,5 +88,6 @@ export const ThumbnailSlide = styled.div`
 `;
 
 export const ThumbnailTitle = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  text-align: start;
 `;

@@ -11,7 +11,7 @@ export const FormCard = styled.div`
   align-items: center;
   justify-content: center;
   background: #ffffff;
-  border-radius: 0px 75px;
+  border-radius: 75px 0;
   box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.25);
 `;
 
@@ -25,7 +25,7 @@ export const FormInput = styled.input`
   border-radius: 15px;
   color: #575155;
   font-size: 1.3em;
-  font-weight: 600;
+  font-weight: 400;
   text-align: center;
 
   &:focus {

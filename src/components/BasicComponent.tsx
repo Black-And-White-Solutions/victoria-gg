@@ -21,6 +21,7 @@ type InvertedConditionProps = {
 const Component = styled.div<InvertedConditionProps>`
   display: grid;
   width: 100%;
+  height: fit-content;
   padding: 2.5rem 2rem;
   gap: 1.5rem;
   grid-template-areas:
@@ -87,7 +88,7 @@ const DescriptionArea = styled.p<InvertedConditionProps>`
 const ButtonArea = styled.div<InvertedConditionProps>`
   display: flex;
   width: 100%;
-  align-items: center;
+  align-items: flex-end;
   justify-content: ${props => ( !props.isInverted ? 'flex-start' : 'flex-end')};
   grid-area: button;
 
@@ -114,11 +115,11 @@ const baseButtonStyles = css<InvertedConditionProps>`
   align-items: center;
   justify-content: center;
   border: none;
-  margin: auto 0;
   background: #f11593;
   border-radius: ${props => ( !props.isInverted ? '45px 0px' : '0px 45px')};
   color: #fff;
-  font-style: normal;
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
   font-weight: 600;
   outline: none;
   text-decoration: none;

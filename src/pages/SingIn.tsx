@@ -1,16 +1,11 @@
 import React, { VoidFunctionComponent } from 'react';
-import styled from 'styled-components';
 import BasicComponent, { ButtonHTML } from '../components/BasicComponent';
-import Container from '../components/Container';
+import { HeightContainer } from '../components/Container';
 import Form from '../components/Form/Form';
-
-const SingInContainer = styled(Container)`
-  height: calc(100vh - 5rem);
-`;
 
 const SingIn: VoidFunctionComponent = () => {
   return (
-    <SingInContainer>
+    <HeightContainer display={'flex'}>
       <BasicComponent
         buttonChildren={<ButtonHTML>Enviar</ButtonHTML>}
         description={
@@ -20,7 +15,7 @@ const SingIn: VoidFunctionComponent = () => {
       >
         <Form />
       </BasicComponent>
-    </SingInContainer>
+    </HeightContainer>
   );
 };
 
