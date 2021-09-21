@@ -42,16 +42,6 @@ export const ThumbnailInfo = styled.div`
   padding-left: 2rem;
 `;
 
-export const ThumbnailsProvider = styled.div`
-  display: flex;
-  width: 360px;
-  height: 100%;
-  flex-direction: column;
-  gap: 0.5rem;
-  grid-area: thumbnails;
-  grid-auto-flow: row;
-`;
-
 export const ThumbnailSlide = styled.div`
   display: flex;
   width: 100%;
