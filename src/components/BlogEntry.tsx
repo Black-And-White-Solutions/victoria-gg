@@ -6,82 +6,62 @@ import remarkGfm from 'remark-gfm';
 const JSON = {
   title: 'Genera tus propios ingresos en una forma innovadora',
   author: {
-    name: 'Author Name',
-    details: 'Author Details',
+    name: 'Nombre del autor',
+    details: 'Detalles del autor',
     thumbnail: 'https://i.imgur.com/5ecsIlls.jpg',
   },
   content: `
----
+# Titulo
 
-# h1 Heading 8-)
-## h2 Heading
-### h3 Heading
-#### h4 Heading
-##### h5 Heading
-###### h6 Heading
+En Victoria G&G te presentamos un modelo de negocio basado únicamente
+en tu propio talento y habilidad como vendedor. ¡Ya basta de depender
+de otro, de esperar a que llegue tu fecha de pago, o de tener que preocuparte
+por querer ganar más! ¡Tú eliges cuánto quieres trabajar, y cosecha los frutos
+de tu esfuerzo!
+¿Qué esperas para empezar a generar?
 
+En Victoria G&G te presentamos un modelo de negocio basado únicamente
+en tu propio talento y habilidad como vendedor. ¡Ya basta de depender
+de otro, de esperar a que llegue tu fecha de pago, o de tener que preocuparte
+por querer ganar más! ¡Tú eliges cuánto quieres trabajar, y cosecha los frutos
+de tu esfuerzo!
+¿Qué esperas para empezar a generar?
 
-## Horizontal Rules
+En Victoria G&G te presentamos un modelo de negocio basado únicamente
+en tu propio talento y habilidad como vendedor. ¡Ya basta de depender
+de otro, de esperar a que llegue tu fecha de pago, o de tener que preocuparte
+por querer ganar más! ¡Tú eliges cuánto quieres trabajar, y cosecha los frutos
+de tu esfuerzo!
+¿Qué esperas para empezar a generar?
 
-___
+En Victoria G&G te presentamos un modelo de negocio basado únicamente
+en tu propio talento y habilidad como vendedor. ¡Ya basta de depender
+de otro, de esperar a que llegue tu fecha de pago, o de tener que preocuparte
+por querer ganar más! ¡Tú eliges cuánto quieres trabajar, y cosecha los frutos
+de tu esfuerzo!
+¿Qué esperas para empezar a generar?
 
----
+En Victoria G&G te presentamos un modelo de negocio basado únicamente
+en tu propio talento y habilidad como vendedor. ¡Ya basta de depender
+de otro, de esperar a que llegue tu fecha de pago, o de tener que preocuparte
+por querer ganar más! ¡Tú eliges cuánto quieres trabajar, y cosecha los frutos
+de tu esfuerzo!
+¿Qué esperas para empezar a generar?
 
-***
+En Victoria G&G te presentamos un modelo de negocio basado únicamente
+en tu propio talento y habilidad como vendedor. ¡Ya basta de depender
+de otro, de esperar a que llegue tu fecha de pago, o de tener que preocuparte
+por querer ganar más! ¡Tú eliges cuánto quieres trabajar, y cosecha los frutos
+de tu esfuerzo!
+¿Qué esperas para empezar a generar?
 
-
-## Typographic replacements
-
-Enable typographer option to see result.
-
-(c) (C) (r) (R) (tm) (TM) (p) (P) +-
-
-test.. test... test..... test?..... test!....
-
-!!!!!! ???? ,,  -- ---
-
-"Smartypants, double quotes" and 'single quotes'
-
-
-## Emphasis
-
-**This is bold text**
-
-__This is bold text__
-
-*This is italic text*
-
-_This is italic text_
-
-~~Strikethrough~~
-
-## Blockquotes
-
-
-> Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
-
-# GFM
-
-## Autolink literals
-
-www.example.com, https://example.com, and contact@example.com.
-
-## Strikethrough
-
-~one~ or ~~two~~ tildes.
-
-## Table
-
-| a | b  |  c |  d  |
-| - | :- | -: | :-: |
-
-## Tasklist
-
-* [ ] to do
-* [x] done
-`,
+En Victoria G&G te presentamos un modelo de negocio basado únicamente
+en tu propio talento y habilidad como vendedor. ¡Ya basta de depender
+de otro, de esperar a que llegue tu fecha de pago, o de tener que preocuparte
+por querer ganar más! ¡Tú eliges cuánto quieres trabajar, y cosecha los frutos
+de tu esfuerzo!
+¿Qué esperas para empezar a generar?
+	`,
 };
 
 const Padding = styled.div`
