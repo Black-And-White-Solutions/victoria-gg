@@ -1,0 +1,12 @@
+[
+  {
+    "blogEntry": 1,
+    "title": "Genera tus propios ingresos en una forma innovadora",
+    "content": "BlogEntryN°1",
+    "author": {
+      "name": "Nombre del autor",
+      "details": "Detalles del autor",
+      "thumbnail": "https://i.imgur.com/5ecsIlls.jpg"
+    }
+  }
+]
