@@ -5,6 +5,7 @@ import About from '../pages/About';
 import HowItWorks from '../pages/HowItWorks';
 import Catalogue from '../pages/Catalogue';
 import SingIn from '../pages/SingIn';
+import BlogEntry from './BlogEntry/BlogEntry';
 
 const PagesRouter: VoidFunctionComponent = () => {
   return (
@@ -14,6 +15,7 @@ const PagesRouter: VoidFunctionComponent = () => {
       <Route path="/howItWorks" component={HowItWorks} />
       <Route path="/catalogue" component={Catalogue} />
       <Route path="/singIn" component={SingIn} />
+      <Route path="/blog/:blogId" component={BlogEntry} />
     </Switch>
   );
 };

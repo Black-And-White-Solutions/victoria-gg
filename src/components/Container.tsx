@@ -16,7 +16,6 @@ const Container = styled.div<ContainerDisplay>`
 `;
 
 export const HeightContainer = styled(Container)`
-  height: calc(100vh - 5rem);
   align-items: center;
 `;
 

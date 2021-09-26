@@ -1,8 +1,38 @@
 [
   {
-    "blogEntry": 1,
+    "blogId": "AboutEntry1",
     "title": "Genera tus propios ingresos en una forma innovadora",
-    "content": "BlogEntryN°1",
+    "content": "En Victoria G&G te presentamos un modelo de negocio basado únicamente en tu propio talento y habilidad como vendedor. ¡Ya basta de depender de otro, de esperar a que llegue tu fecha de pago, o de tener que preocuparte por querer ganar más! ¡Tú eliges cuánto quieres trabajar, y cosecha los frutos de tu esfuerzo! ¿Qué esperas para empezar a generar?",
+    "author": {
+      "name": "Nombre del autor",
+      "details": "Detalles del autor",
+      "thumbnail": "https://i.imgur.com/5ecsIlls.jpg"
+    }
+  },
+  {
+    "blogId": "AboutEntry2",
+    "title": "Empoderate y marca tu presencia",
+    "content": "¡Destaca como vendedor estrella entre los asociados a Victoria G&G, y empoderate como tal! Si sigues esperando una oportunidad de oro para empezar a hacer algo diferente e innovador, ¡entonces esta es! ¡Empieza ya a trabajar con nosotros, y se parte de un proyecto de ventas vanguardista!",
+    "author": {
+      "name": "Nombre del autor",
+      "details": "Detalles del autor",
+      "thumbnail": "https://i.imgur.com/5ecsIlls.jpg"
+    }
+  },
+  {
+    "blogId": "AboutEntry3",
+    "title": "Únete a nuestro equipo de profesionales de la salud",
+    "content": "En Victoria G&G estamos comprometidos con la salud, y el cuidado ambiental; así como también con la calidad de nuestros productos, los cuales cumplen con rigurosos estándares de salubridad y cuidado ambiental con el objetivo de minimizar el impacto ambiental. Nuestro compromiso no solo es brindar un bienestar financiero, ¡sino además un bienestar real!",
+    "author": {
+      "name": "Nombre del autor",
+      "details": "Detalles del autor",
+      "thumbnail": "https://i.imgur.com/5ecsIlls.jpg"
+    }
+  },
+  {
+    "blogId": "AboutEntry4",
+    "title": "Estamos en busqueda de talentos para las ventas",
+    "content": "¡Tú podrías ser nuestro próximo vendedor estrella! ¡Aprovecha esta red de talento en marketing y ventas para potenciar tu negocio y maximizar tus ganancias! Buscamos gente con liderazgo, asertividad, elocuencia y energía. Buscamos a una persona emprendedora, atrevida, original y perceptiva. ¿Crees que puedes ser tú? ¡Entonces atrévete a dar el salto y montar tu propio negocio!",
     "author": {
       "name": "Nombre del autor",
       "details": "Detalles del autor",
