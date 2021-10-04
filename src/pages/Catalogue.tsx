@@ -16,7 +16,7 @@ const Catalogue: VoidFunctionComponent = () => {
     aboutCards.push(
       <BasicComponent
         buttonChildren={
-          <ButtonLink to={item.buttonLink} isInverted={indexIsEven}>
+          <ButtonLink to={`blog/${item.blogId}`} isInverted={indexIsEven}>
             {item.buttonPlaceholder}
           </ButtonLink>
         }

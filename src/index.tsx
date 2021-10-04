@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
 	body {
 		background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(235, 158, 202, 0.15) 100%), #F8F8F8;
 	  color: rgb(0, 0, 0);
-		font-family: 'Inter', 'Dancing Script', sans-serif, cursive;
+		font-family: 'Lora', 'Dancing Script', 'Playfair Display', serif, cursive;
 		-webkit-font-smoothing: antialiased;
 	  -moz-osx-font-smoothing: grayscale;
 	  font-style: normal;
@@ -40,10 +40,10 @@ ReactDOM.render(
     <link
       rel="preconnect"
       href="https://fonts.gstatic.com"
-      crossOrigin="anonymous"
+      crossOrigin="annonymous"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
     <GlobalStyles />

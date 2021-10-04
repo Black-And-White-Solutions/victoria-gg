@@ -1,17 +1,21 @@
 import React, { useEffect, useState, VoidFunctionComponent } from 'react';
 import { useParams } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { HeightContainer } from '../Container';
 import {
   AuthorContainer,
+  MarkdownEngine,
   Padding,
   Thumbnail,
   Title,
 } from './BlogEntryComponents';
 import listOfArticles from '../../assets/JSONs/Blogs.json';
 
-type BlogEntryProps = {
+type BlogEntryParams = {
+  blogId: string;
+};
+
+type BlogEntryProps = BlogEntryParams & {
   author: {
     details: string;
     name: string;
@@ -23,7 +27,7 @@ type BlogEntryProps = {
 };
 
 const BlogEntry: VoidFunctionComponent = () => {
-  const blogId = useParams();
+  const { blogId }: BlogEntryParams = useParams();
   const [blogProps, setBlogProps] = useState({
     title: '',
     content: '',
@@ -38,8 +42,10 @@ const BlogEntry: VoidFunctionComponent = () => {
 
   useEffect(() => {
     listOfArticles.forEach((item: BlogEntryProps) => {
-      const { blogId, ...rest } = item;
-      if (item.blogId === blogId) setBlogProps({ ...rest });
+      if (item.blogId === blogId) {
+        const { blogId, ...rest } = item;
+        setBlogProps({ ...rest });
+      }
     });
   }, [blogId]);
 
@@ -48,9 +54,9 @@ const BlogEntry: VoidFunctionComponent = () => {
       <Padding>
         <Title>{blogProps.title}</Title>
         <Padding>
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          <MarkdownEngine remarkPlugins={[remarkGfm]}>
             {blogProps.content}
-          </ReactMarkdown>
+          </MarkdownEngine>
         </Padding>
         <AuthorContainer>
           <Thumbnail src={blogProps.author.thumbnail} alt="Thumbnail" />
