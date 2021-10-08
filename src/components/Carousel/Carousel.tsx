@@ -1,27 +1,33 @@
-import PropTypes from 'prop-types';
 import React, {
   ReactChild,
   VoidFunctionComponent,
-  useEffect,
-  useContext,
-  useState,
+  //  useEffect,
+  //  useContext,
+  //  useState,
 } from 'react';
-import { Slide, CarouselContext } from 'pure-react-carousel';
+// import PropTypes from 'prop-types';
+import {
+  CarouselProvider,
+  Slide /* CarouselContext */,
+} from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import {
-  CarouselWrapper,
   Image,
   ImageSlide,
   SliderProvider,
-  Thumbnail,
-  ThumbnailDescription,
-  ThumbnailInfo,
-  ThumbnailsProvider,
-  ThumbnailSlide,
-  ThumbnailTitle,
+  Text,
+  TextArea,
+  TitleArea,
+  //  Thumbnail,
+  //  ThumbnailDescription,
+  //  ThumbnailInfo,
+  //  ThumbnailsProvider,
+  //  ThumbnailSlide,
+  //  ThumbnailTitle,
 } from './CarouselComponents';
 import listOfSlides from '../../assets/JSONs/Home.json';
 
+/*
 type BaseThumbnailsProviderProps = {
   listOfSlides: any[];
 };
@@ -61,11 +67,16 @@ BaseThumbnailsProvider.propTypes = {
   listOfSlides: PropTypes.array.isRequired,
 };
 
+ */
 const Carousel: VoidFunctionComponent = () => {
   const carouselSlides: ReactChild[] = [];
   listOfSlides.forEach((item, index) => {
     carouselSlides.push(
       <Slide index={index} key={`Slide${index + 1}`}>
+        <TextArea>
+          <TitleArea>{item.title}</TitleArea>
+          <Text>{item.description}</Text>
+        </TextArea>
         <ImageSlide key={`ImageSlide${index + 1}`}>
           <Image
             src={item.image}
@@ -78,18 +89,21 @@ const Carousel: VoidFunctionComponent = () => {
   });
 
   return (
-    <CarouselWrapper
+    <CarouselProvider
       infinite={true}
       isPlaying={true}
-      naturalSlideWidth={648}
-      naturalSlideHeight={434}
+      naturalSlideWidth={512 * 3}
+      naturalSlideHeight={512}
+      isIntrinsicHeight={true}
       totalSlides={carouselSlides.length}
     >
-      <SliderProvider>{carouselSlides} </SliderProvider>
+      <SliderProvider>{carouselSlides}</SliderProvider>
+      {/*
       <ThumbnailsProvider>
         <BaseThumbnailsProvider listOfSlides={listOfSlides} />
       </ThumbnailsProvider>
-    </CarouselWrapper>
+			*/}
+    </CarouselProvider>
   );
 };
 

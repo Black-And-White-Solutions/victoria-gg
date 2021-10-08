@@ -4,9 +4,10 @@ import { HeightContainer } from '../components/Container';
 
 const Home: VoidFunctionComponent = () => {
   return (
-    <HeightContainer display={'flex'}>
+    <>
       <Carousel />
-    </HeightContainer>
+      <HeightContainer display={'flex'}></HeightContainer>
+    </>
   );
 };
 
