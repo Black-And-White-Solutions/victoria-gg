@@ -1,22 +1,26 @@
 import React, { VoidFunctionComponent } from 'react';
-import { FormCard, FormInput } from './FormComponents';
+import { FormCard, FormInputTemplate } from './FormComponents';
 
 const Form: VoidFunctionComponent = () => {
   return (
     <FormCard>
-      <FormInput name={'name'} placeholder={'Nombre Completo'} type={'text'} />
-      <FormInput
-        name={'birthdate'}
-        placeholder={'Fecha de nacimiento'}
+      <FormInputTemplate
+        id={'name'}
+        placeholder={'Nombre Completo'}
         type={'text'}
       />
-      <FormInput
-        name={'phone'}
+      <FormInputTemplate
+        id={'birthdate'}
+        placeholder={'Fecha de nacimiento'}
+        type={'date'}
+      />
+      <FormInputTemplate
+        id={'phone'}
         placeholder={'Número de Teléfono'}
         type={'phone'}
       />
-      <FormInput
-        name={'mail'}
+      <FormInputTemplate
+        id={'mail'}
         placeholder={'Correo Electrónico'}
         type={'email'}
       />

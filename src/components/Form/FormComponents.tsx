@@ -1,11 +1,24 @@
+import React, { VoidFunctionComponent, ChangeEventHandler } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // import { size } from '../../assets/mediaSizes';
 
 // const { desktopS, tablet, mobileL } = size;
 
+type FormInputProps = {
+  id: string;
+  name?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement> | undefined;
+  placeholder?: string;
+  type: string;
+  value?: string;
+};
+
+// Styled Components
+
 export const FormCard = styled.div`
   display: flex;
-  width: 70%;
+  width: 50%;
   height: fit-content;
   flex-direction: column;
   align-items: center;
@@ -18,21 +31,60 @@ export const FormCard = styled.div`
 
 export const FormInput = styled.input`
   width: 80%;
-  height: 3rem;
-  padding: 0 2rem;
+  height: 2.2rem;
+  padding: 0 1rem;
   border: none;
-  margin: 1rem 0;
+  margin: 0.5rem 0 1.5rem 0;
   background: #fff0f0;
   border-radius: 15px;
   color: #575155;
-  font-size: 1.3em;
-  font-weight: 400;
+  font-size: 1.2em;
+  font-weight: 500;
   text-align: center;
 
   &:focus {
     outline: none;
   }
 `;
+
+export const FormLabel = styled.label`
+  color: #575155;
+`;
+
+// Function Components
+
+export const FormInputTemplate: VoidFunctionComponent<FormInputProps> =
+  props => {
+    return (
+      <>
+        <FormLabel htmlFor={props.id}>{props.placeholder}</FormLabel>
+        <FormInput
+          id={props.id}
+          name={props.name}
+          onChange={props.onChange}
+          placeholder={props.placeholder}
+          type={props.type}
+          value={props.value}
+        />
+      </>
+    );
+  };
+
+FormInputTemplate.defaultProps = {
+  name: '',
+  placeholder: '',
+  type: 'text',
+  value: '',
+};
+
+FormInputTemplate.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  placeholder: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+};
 
 /*
 export const FormInputLine = styled.div`
