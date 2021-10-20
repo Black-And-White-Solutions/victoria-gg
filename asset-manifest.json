@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/victoria-gg/static/js/main.df0032b0.chunk.js",
-    "main.js.map": "/victoria-gg/static/js/main.df0032b0.chunk.js.map",
+    "main.js": "/victoria-gg/static/js/main.cca54484.chunk.js",
+    "main.js.map": "/victoria-gg/static/js/main.cca54484.chunk.js.map",
     "runtime-main.js": "/victoria-gg/static/js/runtime-main.9b0f210c.js",
     "runtime-main.js.map": "/victoria-gg/static/js/runtime-main.9b0f210c.js.map",
     "static/css/2.ad5db7ce.chunk.css": "/victoria-gg/static/css/2.ad5db7ce.chunk.css",
-    "static/js/2.e20f1cf1.chunk.js": "/victoria-gg/static/js/2.e20f1cf1.chunk.js",
-    "static/js/2.e20f1cf1.chunk.js.map": "/victoria-gg/static/js/2.e20f1cf1.chunk.js.map",
+    "static/js/2.68d9b99e.chunk.js": "/victoria-gg/static/js/2.68d9b99e.chunk.js",
+    "static/js/2.68d9b99e.chunk.js.map": "/victoria-gg/static/js/2.68d9b99e.chunk.js.map",
     "index.html": "/victoria-gg/index.html",
     "static/css/2.ad5db7ce.chunk.css.map": "/victoria-gg/static/css/2.ad5db7ce.chunk.css.map",
-    "static/js/2.e20f1cf1.chunk.js.LICENSE.txt": "/victoria-gg/static/js/2.e20f1cf1.chunk.js.LICENSE.txt"
+    "static/js/2.68d9b99e.chunk.js.LICENSE.txt": "/victoria-gg/static/js/2.68d9b99e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9b0f210c.js",
     "static/css/2.ad5db7ce.chunk.css",
-    "static/js/2.e20f1cf1.chunk.js",
-    "static/js/main.df0032b0.chunk.js"
+    "static/js/2.68d9b99e.chunk.js",
+    "static/js/main.cca54484.chunk.js"
   ]
 }
