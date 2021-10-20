@@ -1,17 +1,18 @@
 import { NavLink as Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { maxMargin } from '../../assets/GenericCSS';
 import { size } from '../../assets/mediaSizes';
 
-const { tablet, desktopS } = size;
+const { tablet } = size;
 
 export const NavBar = styled.nav`
+  ${maxMargin}
   position: sticky;
   z-index: 10;
   top: 0;
   display: flex;
   height: 5rem;
   justify-content: space-between;
-  padding: 0.5rem calc((100vw - ${desktopS}) / 2);
   background: #f8f8f8;
 
   @media screen and (max-width: ${tablet}) {

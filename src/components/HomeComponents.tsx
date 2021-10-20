@@ -62,4 +62,5 @@ export const CardShowcase = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-evenly;
+  margin: 2rem auto;
 `;

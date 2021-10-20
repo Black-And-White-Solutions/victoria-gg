@@ -7,11 +7,9 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter } from 'react-router-dom';
-// import styled from 'styled-components';
-// import { Grid, Cell } from 'styled-css-grid-v5';
-// import { device } from './assets/mediaSizes.js';
 import NavBar from './Navbar/NavBar';
 import DropdownBar from './Navbar/DropdownBar';
+import Footer from './Footer';
 
 type ComponentChilds = {
   children?: ReactChild[] | ReactNode;
@@ -29,6 +27,7 @@ const Layout: VoidFunctionComponent<ComponentChilds> = ({ children }) => {
       <DropdownBar isOpen={toggle} toggle={toggleNavbar} />
       <NavBar toggle={toggleNavbar} />
       {children}
+      <Footer />
     </BrowserRouter>
   );
 };

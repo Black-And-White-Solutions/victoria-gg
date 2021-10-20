@@ -6,10 +6,11 @@ import styled from 'styled-components';
 export const FormCard = styled.div`
   display: flex;
   width: 70%;
-  height: 520px;
+  height: fit-content;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 2rem 0;
   background: #ffffff;
   border-radius: 75px 0;
   box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.25);
@@ -33,6 +34,7 @@ export const FormInput = styled.input`
   }
 `;
 
+/*
 export const FormInputLine = styled.div`
   position: relative;
   top: -30%;
@@ -48,3 +50,4 @@ export const FormInputWrapper = styled.div`
   align-items: center;
   justify-content: center;
 `;
+ */
