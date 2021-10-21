@@ -11,6 +11,7 @@ export const maxMargin = css`
   padding: 0.5rem calc((100vw - ${desktopS}) / 2);
 `;
 
+/* stylelint-disable -- Is deleting webkit rules. */
 export const lineClamping = css<LineClampProps>`
   display: box;
   overflow: hidden;
@@ -18,3 +19,4 @@ export const lineClamping = css<LineClampProps>`
   -webkit-line-clamp: ${({ numberOfLines }) => numberOfLines || 1};
   text-overflow: ellipsis;
 `;
+/* stylelint-enable */

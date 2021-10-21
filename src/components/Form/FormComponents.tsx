@@ -21,7 +21,7 @@ export const FormWrapper = styled.div`
 
 export const FormDoubleInput = styled.div`
   display: grid;
-  width: 90%;
+  width: 88%;
   height: fit-content;
   gap: 1.5rem;
   grid-template-columns: repeat(2, [col-start] 1fr);
@@ -57,6 +57,17 @@ export const FormInputWrapper = styled.div`
 
 export const FormLabel = styled.label`
   color: #575155;
+`;
+
+export const TitleSmall = styled.h2`
+  align-self: flex-start;
+  padding-bottom: 1rem;
+  padding-left: 10%;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.45px;
+  line-height: 34.5px;
 `;
 
 // Function Components
@@ -101,21 +112,3 @@ FormInputTemplate.propTypes = {
   type: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
 };
-
-/*
-export const FormInputLine = styled.div`
-  position: relative;
-  top: -30%;
-  width: 55%;
-  height: 0;
-  border: 1px solid #f11593;
-`;
-
-export const FormInputWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
- */

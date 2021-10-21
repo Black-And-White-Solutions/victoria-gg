@@ -25,7 +25,7 @@ const Component = styled.div<InvertedConditionProps>`
   display: grid;
   width: 100%;
   height: fit-content;
-  padding: 2.5rem 2rem;
+  padding: 2.5rem 1.5rem;
   gap: 1.5rem;
   grid-template-areas:
     'title content'
