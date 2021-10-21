@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { maxMargin } from '../../assets/GenericCSS';
 
 export const Image = styled.img`
   width: 100%;
@@ -14,6 +15,7 @@ export const ImageSlide = styled.div`
 `;
 
 export const TextArea = styled.div`
+  ${maxMargin}
   position: absolute;
   z-index: 10;
   bottom: 0;
@@ -21,7 +23,6 @@ export const TextArea = styled.div`
   width: inherit;
   height: 5rem;
   flex-direction: column;
-  padding: 1rem 2rem;
   background: #25252633;
   color: #ffffff;
 `;
@@ -29,7 +30,7 @@ export const TextArea = styled.div`
 export const TitleArea = styled.div`
   position: relative;
   top: -3rem;
-  left: 2rem;
+  left: 3rem;
   width: fit-content;
   height: fit-content;
   padding: 0.5rem 1rem;
@@ -45,8 +46,10 @@ export const TitleArea = styled.div`
 export const Text = styled.p`
   display: box;
   overflow: hidden;
+  padding: 0 1.5rem;
   box-orient: vertical;
   font-size: 1.2rem;
   -webkit-line-clamp: 2;
   line-height: 1.4rem;
+  text-overflow: ellipsis;
 `;

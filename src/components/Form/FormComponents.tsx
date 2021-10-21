@@ -5,6 +5,62 @@ import styled from 'styled-components';
 
 // const { desktopS, tablet, mobileL } = size;
 
+// Styled Components
+
+export const FormWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  min-width: 512px;
+  height: fit-content;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 75px 0;
+`;
+
+export const FormDoubleInput = styled.div`
+  display: grid;
+  width: 90%;
+  height: fit-content;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, [col-start] 1fr);
+`;
+
+export const FormInput = styled.input`
+  width: 80%;
+  height: 2.2rem;
+  padding: 0 1rem;
+  border: none;
+  margin: 0.5rem 0 1.5rem 0;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
+  color: #575155;
+  font-size: 1em;
+  font-weight: 500;
+  text-align: center;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const FormInputWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const FormLabel = styled.label`
+  color: #575155;
+`;
+
+// Function Components
+
 type FormInputProps = {
   id: string;
   name?: string;
@@ -14,49 +70,10 @@ type FormInputProps = {
   value?: string;
 };
 
-// Styled Components
-
-export const FormCard = styled.div`
-  display: flex;
-  width: 50%;
-  height: fit-content;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 0;
-  background: #ffffff;
-  border-radius: 75px 0;
-  box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.25);
-`;
-
-export const FormInput = styled.input`
-  width: 80%;
-  height: 2.2rem;
-  padding: 0 1rem;
-  border: none;
-  margin: 0.5rem 0 1.5rem 0;
-  background: #fff0f0;
-  border-radius: 15px;
-  color: #575155;
-  font-size: 1.2em;
-  font-weight: 500;
-  text-align: center;
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const FormLabel = styled.label`
-  color: #575155;
-`;
-
-// Function Components
-
 export const FormInputTemplate: VoidFunctionComponent<FormInputProps> =
   props => {
     return (
-      <>
+      <FormInputWrapper>
         <FormLabel htmlFor={props.id}>{props.placeholder}</FormLabel>
         <FormInput
           id={props.id}
@@ -64,9 +81,8 @@ export const FormInputTemplate: VoidFunctionComponent<FormInputProps> =
           onChange={props.onChange}
           placeholder={props.placeholder}
           type={props.type}
-          value={props.value}
         />
-      </>
+      </FormInputWrapper>
     );
   };
 
