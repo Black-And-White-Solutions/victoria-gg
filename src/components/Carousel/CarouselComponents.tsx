@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { maxMargin } from '../../assets/GenericCSS';
+import { lineClamping, maxMargin } from '../../assets/GenericCSS';
 
 export const Image = styled.img`
   width: 100%;
@@ -44,12 +44,8 @@ export const TitleArea = styled.div`
 `;
 
 export const Text = styled.p`
-  display: box;
-  overflow: hidden;
+  ${lineClamping}
   padding: 0 1.5rem;
-  box-orient: vertical;
   font-size: 1.2rem;
-  -webkit-line-clamp: 2;
   line-height: 1.4rem;
-  text-overflow: ellipsis;
 `;

@@ -1,7 +1,8 @@
 import React, { VoidFunctionComponent, ReactChild, ReactNode } from 'react';
-import { NavLink as Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { NavLink as Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import { lineClamping, LineClampProps } from '../assets/GenericCSS';
 import { size } from '../assets/mediaSizes';
 
 const { desktopS, tablet, mobileM } = size;
@@ -17,6 +18,8 @@ type ComponentProps = {
 type InvertedConditionProps = {
   isInverted?: boolean;
 };
+
+type InvertedDescriptionProps = InvertedConditionProps & LineClampProps;
 
 const Component = styled.div<InvertedConditionProps>`
   display: grid;
@@ -75,13 +78,11 @@ const TitleArea = styled.h1<InvertedConditionProps>`
     `}
 `;
 
-const DescriptionArea = styled.p<InvertedConditionProps>`
-  display: box;
-  overflow: hidden;
+const DescriptionArea = styled.p<InvertedDescriptionProps>`
+  ${lineClamping}
   font-size: 1.2em;
   font-weight: 400;
   grid-area: description;
-  -webkit-line-clamp: 14;
   text-align: ${props => ( !props.isInverted ? 'left' : 'right')};
 `;
 
@@ -154,7 +155,9 @@ const BasicComponent: VoidFunctionComponent<ComponentProps> = ({
   return (
     <Component isInverted={inverted}>
       <TitleArea isInverted={inverted}>{title}</TitleArea>
-      <DescriptionArea isInverted={inverted}>{description}</DescriptionArea>
+      <DescriptionArea isInverted={inverted} numberOfLines={14}>
+        {description}
+      </DescriptionArea>
       <ButtonArea isInverted={inverted}>{buttonChildren}</ButtonArea>
       <ContentArea isInverted={inverted}>{children}</ContentArea>
     </Component>
