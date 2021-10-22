@@ -28,7 +28,13 @@ const IconStyle = css`
   width: auto;
   height: 2rem;
   margin: 0 0.5rem;
-  color: #f11593;
+  color: #000000;
+  transition: ease-in 0.3s;
+
+  &:hover {
+    color: #f11593;
+    transition: ease-out 0.3s;
+  }
 `;
 
 const FooterIcons = styled.div`
