@@ -16,13 +16,13 @@ const Home: VoidFunctionComponent = () => {
       <StyledContainer display={'flex'}>
         <Title>¿Qué estamos buscando?</Title>
         <CardShowcase>
-          <Card>
+          <Card to="/catalogue">
             <h2>Productos</h2>
             <ImageContainer>
               <Image src="https://i.imgur.com/SZIavr2m.jpg" alt="Image" />
             </ImageContainer>
           </Card>
-          <Card>
+          <Card to="/about">
             <h2>Información sobre la Red</h2>
             <ImageContainer>
               <Image src="https://i.imgur.com/Ql6vzlZm.jpg" alt="Image" />

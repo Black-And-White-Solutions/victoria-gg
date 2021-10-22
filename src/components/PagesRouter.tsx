@@ -1,5 +1,5 @@
 import React, { VoidFunctionComponent } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Home from '../pages/Home';
 import About from '../pages/About';
 import HowItWorks from '../pages/HowItWorks';
@@ -16,6 +16,9 @@ const PagesRouter: VoidFunctionComponent = () => {
       <Route path="/catalogue" component={Catalogue} />
       <Route path="/singIn" component={SingIn} />
       <Route path="/blog/:blogId" component={BlogEntry} />
+      <Route path="/victoria-gg">
+        <Redirect to="/" />
+      </Route>
     </Switch>
   );
 };

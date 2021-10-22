@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Container from './Container';
 
@@ -7,20 +8,18 @@ export const StyledContainer = styled(Container)`
 `;
 
 export const Title = styled.div`
-  width: 24rem;
+  width: 80%;
   padding: 2rem;
   margin: 2rem;
-  background: #f11593;
-  border-radius: 45px 0;
-  color: #ffffff;
+  margin-bottom: 8px;
+  color: #ff5cb9;
   font-family: 'Dancing Script', cursive;
-  font-size: 2rem;
-  font-style: normal;
+  font-size: 48px;
   font-weight: 700;
   text-align: center;
 `;
 
-export const Card = styled.div`
+export const Card = styled(NavLink)`
   display: flex;
   width: 40%;
   height: fit-content;
@@ -30,6 +29,7 @@ export const Card = styled.div`
   background: #ff5cb9;
   border-radius: 45px 0;
   gap: 1rem;
+  text-decoration: none;
 
   h2 {
     color: #ffffff;
