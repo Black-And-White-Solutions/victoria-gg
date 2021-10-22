@@ -11,12 +11,12 @@ export const maxMargin = css`
   padding: 0.5rem calc((100vw - ${desktopS}) / 2);
 `;
 
-/* stylelint-disable -- Is deleting webkit rules. */
 export const lineClamping = css<LineClampProps>`
-  display: box;
+  /* stylelint-disable -- Is deleting webkit rules. */
+  display: -webkit-box;
   overflow: hidden;
-  box-orient: vertical;
-  -webkit-line-clamp: ${({ numberOfLines }) => numberOfLines || 1};
   text-overflow: ellipsis;
+  -webkit-line-clamp: ${({ numberOfLines }) => numberOfLines || 1};
+  -webkit-box-orient: vertical;
+  /* stylelint-enable */
 `;
-/* stylelint-enable */
