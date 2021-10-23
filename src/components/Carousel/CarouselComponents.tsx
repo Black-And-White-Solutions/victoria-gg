@@ -21,21 +21,23 @@ export const TextArea = styled.div`
   bottom: 0;
   display: flex;
   width: inherit;
-  height: 5rem;
+  height: 10rem;
   flex-direction: column;
-  background: #25252633;
+  justify-content: center;
+  background: #25252664;
   color: #ffffff;
+  gap: 0;
 `;
 
 export const TitleArea = styled.div`
   position: relative;
-  top: -3rem;
+  top: -7rem;
   left: 3rem;
   width: fit-content;
   height: fit-content;
-  padding: 0.5rem 1rem;
+  padding: 2rem 4rem;
   margin-right: -2rem;
-  margin-bottom: -3rem;
+  margin-bottom: -6rem;
   background: #eb9ecabf;
   font-family: 'Dancing Script', cursive;
   font-size: 2rem;

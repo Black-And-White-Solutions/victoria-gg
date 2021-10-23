@@ -18,7 +18,7 @@ const Carousel: VoidFunctionComponent = () => {
       <Slide index={index} key={`Slide${index + 1}`}>
         <TextArea>
           <TitleArea>{item.title}</TitleArea>
-          <Text numberOfLines={2}>{item.description}</Text>
+          <Text numberOfLines={4}>{item.description}</Text>
         </TextArea>
         <ImageSlide key={`ImageSlide${index + 1}`}>
           <Link to={`blog/${item.blogId}`}>

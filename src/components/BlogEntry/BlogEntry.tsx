@@ -1,7 +1,7 @@
 import React, { useEffect, useState, VoidFunctionComponent } from 'react';
 import { useParams } from 'react-router-dom';
 import remarkGfm from 'remark-gfm';
-import { HeightContainer } from '../Container';
+import Container from '../Container';
 import {
   AuthorContainer,
   MarkdownEngine,
@@ -50,7 +50,7 @@ const BlogEntry: VoidFunctionComponent = () => {
   }, [blogId]);
 
   return (
-    <HeightContainer display={'flex'}>
+    <Container display={'flex'}>
       <Padding>
         <Title>{blogProps.title}</Title>
         <Padding>
@@ -66,7 +66,7 @@ const BlogEntry: VoidFunctionComponent = () => {
           </div>
         </AuthorContainer>
       </Padding>
-    </HeightContainer>
+    </Container>
   );
 };
 
