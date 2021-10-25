@@ -13,7 +13,6 @@ const FooterBar = styled.div`
   align-items: center;
   justify-content: space-between;
   background: #f8f8f8;
-  box-shadow: 0px -10px 25px rgba(0, 0, 0, 0.25);
 
   @media screen and (max-width: ${tablet}) {
     flex-direction: column;
