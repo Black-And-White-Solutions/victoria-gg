@@ -58,9 +58,10 @@ export const ImageContainer = styled.div`
   text-align: center;
 `;
 
-export const CardShowcase = styled.div`
+export const Showcase = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-evenly;
   margin: 2rem auto;
+  gap: 1rem;
 `;

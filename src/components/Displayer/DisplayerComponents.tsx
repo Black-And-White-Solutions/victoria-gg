@@ -1,27 +1,15 @@
-import React, { VoidFunctionComponent, ReactChild, ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import { NavLink as Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { lineClamping, LineClampProps } from '../assets/GenericCSS';
-import { size } from '../assets/mediaSizes';
+import { lineClamping, LineClampProps } from '../../assets/GenericCSS';
+import { size } from '../../assets/mediaSizes';
 
 const { desktopS, tablet, mobileM } = size;
-
-type ComponentProps = {
-  buttonChildren: ReactChild[] | ReactNode;
-  children?: ReactChild[] | ReactNode;
-  description: string;
-  inverted?: boolean;
-  title: string;
-};
 
 type InvertedConditionProps = {
   isInverted?: boolean;
 };
 
-type InvertedDescriptionProps = InvertedConditionProps & LineClampProps;
-
-const Component = styled.div<InvertedConditionProps>`
+export const Component = styled.div<InvertedConditionProps>`
   display: grid;
   width: 100%;
   height: fit-content;
@@ -63,7 +51,7 @@ const Component = styled.div<InvertedConditionProps>`
   }
 `;
 
-const TitleArea = styled.h1<InvertedConditionProps>`
+export const TitleArea = styled.h1<InvertedConditionProps>`
   color: #ff5cb9;
   font-family: 'Dancing Script', cursive;
   font-style: normal;
@@ -78,7 +66,9 @@ const TitleArea = styled.h1<InvertedConditionProps>`
     `}
 `;
 
-const DescriptionArea = styled.p<InvertedDescriptionProps>`
+export const DescriptionArea = styled.p<
+  InvertedConditionProps & LineClampProps
+>`
   ${lineClamping}
   font-size: 1.2em;
   font-weight: 400;
@@ -86,7 +76,7 @@ const DescriptionArea = styled.p<InvertedDescriptionProps>`
   text-align: ${props => ( !props.isInverted ? 'left' : 'right')};
 `;
 
-const ButtonArea = styled.div<InvertedConditionProps>`
+export const ButtonArea = styled.div<InvertedConditionProps>`
   display: flex;
   width: 100%;
   align-items: flex-end;
@@ -98,7 +88,7 @@ const ButtonArea = styled.div<InvertedConditionProps>`
   }
 `;
 
-const ContentArea = styled.div<InvertedConditionProps>`
+export const ContentArea = styled.div<InvertedConditionProps>`
   display: flex;
   align-items: center;
   justify-content: ${props => ( !props.isInverted ? 'flex-end' : 'flex-start')};
@@ -144,38 +134,3 @@ export const Image = styled.img<InvertedConditionProps>`
   height: fit-content;
   border-radius: ${props => ( !props.isInverted ? '75px 0px' : '0px 75px')};
 `;
-
-const BasicComponent: VoidFunctionComponent<ComponentProps> = ({
-  buttonChildren,
-  children,
-  description,
-  inverted,
-  title,
-}) => {
-  return (
-    <Component isInverted={inverted}>
-      <TitleArea isInverted={inverted}>{title}</TitleArea>
-      <DescriptionArea isInverted={inverted} numberOfLines={14}>
-        {description}
-      </DescriptionArea>
-      <ButtonArea isInverted={inverted}>{buttonChildren}</ButtonArea>
-      <ContentArea isInverted={inverted}>{children}</ContentArea>
-    </Component>
-  );
-};
-
-BasicComponent.defaultProps = {
-  description: 'Description',
-  inverted: false,
-  title: 'Title',
-};
-
-BasicComponent.propTypes = {
-  buttonChildren: PropTypes.node,
-  children: PropTypes.node,
-  description: PropTypes.string.isRequired,
-  inverted: PropTypes.bool,
-  title: PropTypes.string.isRequired,
-};
-
-export default BasicComponent;
