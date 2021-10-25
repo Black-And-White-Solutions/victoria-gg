@@ -1,3 +1,5 @@
+import { ReactChild, ReactNode } from 'react';
+import PropTypes from 'prop-types';
 import { NavLink as Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { lineClamping, LineClampProps } from '../../assets/GenericCSS';
@@ -5,21 +7,46 @@ import { size } from '../../assets/mediaSizes';
 
 const { desktopS, tablet, mobileM } = size;
 
+// Displayer and MiniDisplayer shared props.
+export type ComponentTypeProps = {
+  buttonChildren: ReactChild[] | ReactNode;
+  children?: ReactChild[] | ReactNode;
+  description: string;
+  inverted?: boolean;
+  numberOfLines?: number;
+  title: string;
+};
+
+export const ComponentDefaultProps = {
+  description: 'Description',
+  inverted: false,
+  title: 'Title',
+};
+
+export const ComponentPropTypes = {
+  buttonChildren: PropTypes.node,
+  children: PropTypes.node,
+  description: PropTypes.string.isRequired,
+  inverted: PropTypes.bool,
+  numberOfLines: PropTypes.number,
+  title: PropTypes.string.isRequired,
+};
+
+// Styled Componets types
 type InvertedConditionProps = {
   isInverted?: boolean;
 };
 
-export const Component = styled.div<InvertedConditionProps>`
+// Styled Components
+const ComponentSharedStyles = css<InvertedConditionProps>`
   display: grid;
   width: 100%;
   height: fit-content;
   padding: 2.5rem 1.5rem;
-  gap: 1.5rem;
   grid-template-areas:
     'title content'
     'description content'
     'button content';
-  grid-template-columns: ${props => !props.isInverted ? '2fr 3fr' : '3fr 2fr'};
   grid-template-rows: auto;
 
   ${props =>
@@ -49,6 +76,18 @@ export const Component = styled.div<InvertedConditionProps>`
   @media screen and (max-width: calc(${mobileM} - 1px)) {
     font-size: 10px;
   }
+`;
+
+export const Component = styled.div<InvertedConditionProps>`
+  ${ComponentSharedStyles}
+  gap: 1.5rem;
+  grid-template-columns: ${props => !props.isInverted ? '2fr 3fr' : '3fr 2fr'};
+`;
+
+export const MiniComponent = styled.div<InvertedConditionProps>`
+  ${ComponentSharedStyles}
+  gap: 0.5rem;
+  grid-template-columns: ${props => !props.isInverted ? '1fr 0.75fr' : '0.75fr 1fr'};
 `;
 
 export const TitleArea = styled.h1<InvertedConditionProps>`

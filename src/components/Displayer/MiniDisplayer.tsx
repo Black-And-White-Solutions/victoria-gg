@@ -1,6 +1,6 @@
 import React, { VoidFunctionComponent } from 'react';
 import {
-  Component,
+  MiniComponent,
   ComponentDefaultProps,
   ComponentPropTypes,
   ComponentTypeProps,
@@ -10,27 +10,28 @@ import {
   ContentArea,
 } from './DisplayerComponents';
 
-const Displayer: VoidFunctionComponent<ComponentTypeProps> = ({
+const MiniDisplayer: VoidFunctionComponent<ComponentTypeProps> = ({
   buttonChildren,
   children,
   description,
   inverted,
   title,
+  numberOfLines,
 }) => {
   return (
-    <Component isInverted={inverted}>
+    <MiniComponent isInverted={inverted}>
       <TitleArea isInverted={inverted}>{title}</TitleArea>
-      <DescriptionArea isInverted={inverted} numberOfLines={14}>
+      <DescriptionArea isInverted={inverted} numberOfLines={numberOfLines}>
         {description}
       </DescriptionArea>
       <ButtonArea isInverted={inverted}>{buttonChildren}</ButtonArea>
       <ContentArea isInverted={inverted}>{children}</ContentArea>
-    </Component>
+    </MiniComponent>
   );
 };
 
-Displayer.defaultProps = ComponentDefaultProps;
+MiniDisplayer.defaultProps = ComponentDefaultProps;
 
-Displayer.propTypes = ComponentPropTypes;
+MiniDisplayer.propTypes = ComponentPropTypes;
 
-export default Displayer;
+export default MiniDisplayer;
