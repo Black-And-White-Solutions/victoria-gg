@@ -37,6 +37,10 @@ type InvertedConditionProps = {
   isInverted?: boolean;
 };
 
+type CustomButtonProps = {
+  fontSize?: string;
+};
+
 // Styled Components
 const ComponentSharedStyles = css<InvertedConditionProps>`
   display: grid;
@@ -138,7 +142,7 @@ export const ContentArea = styled.div<InvertedConditionProps>`
   }
 `;
 
-const baseButtonStyles = css<InvertedConditionProps>`
+const baseButtonStyles = css<InvertedConditionProps & CustomButtonProps>`
   display: flex;
   width: 50%;
   height: 5rem;
@@ -146,10 +150,10 @@ const baseButtonStyles = css<InvertedConditionProps>`
   justify-content: center;
   border: none;
   background: #f11593;
-  border-radius: ${props => ( !props.isInverted ? '45px 0px' : '0px 45px')};
+  border-radius: ${({ isInverted }) => (isInverted ? '45px 0px' : '0px 45px')};
   color: #fff;
   font-family: Inter, sans-serif;
-  font-size: 1rem;
+  font-size: ${({ fontSize }) => fontSize || '1rem'};
   font-weight: 600;
   outline: none;
   text-decoration: none;

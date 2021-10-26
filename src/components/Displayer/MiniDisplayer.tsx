@@ -5,7 +5,6 @@ import {
   ComponentPropTypes,
   ComponentTypeProps,
   TitleArea,
-  DescriptionArea,
   ButtonArea,
   ContentArea,
 } from './DisplayerComponents';
@@ -21,9 +20,6 @@ const MiniDisplayer: VoidFunctionComponent<ComponentTypeProps> = ({
   return (
     <MiniComponent isInverted={inverted}>
       <TitleArea isInverted={inverted}>{title}</TitleArea>
-      <DescriptionArea isInverted={inverted} numberOfLines={numberOfLines}>
-        {description}
-      </DescriptionArea>
       <ButtonArea isInverted={inverted}>{buttonChildren}</ButtonArea>
       <ContentArea isInverted={inverted}>{children}</ContentArea>
     </MiniComponent>

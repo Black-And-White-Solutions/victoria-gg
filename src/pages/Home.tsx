@@ -1,5 +1,5 @@
 import React, { VoidFunctionComponent } from 'react';
-import Displayer from '../components/Displayer/Displayer';
+import MiniDisplayer from '../components/Displayer/MiniDisplayer';
 import { ButtonLink, Image } from '../components/Displayer/DisplayerComponents';
 import Carousel from '../components/Carousel/Carousel';
 import { Title, Showcase, StyledContainer } from '../components/HomeComponents';
@@ -8,24 +8,26 @@ import { size } from '../assets/mediaSizes.js';
 const { mobileS, tablet } = size;
 
 const Home: VoidFunctionComponent = () => {
+  const inverted = true;
+
   return (
     <>
       <Carousel />
       <StyledContainer display={'flex'}>
-        <Title>¿Qué estamos buscando?</Title>
+        <Title>Explora nuestras secciones</Title>
         <Showcase>
-          <Displayer
+          <MiniDisplayer
             buttonChildren={
-              <ButtonLink to="/catalogue" isInverted={false}>
-                Conoce más
+              <ButtonLink to="/catalogue" isInverted={inverted}>
+                Explorar
               </ButtonLink>
             }
             description="Lorem Ipsum"
-            inverted={true}
-            title="Productos"
+            inverted={!inverted}
+            title="Catálogo"
           >
             <Image
-              isInverted={false}
+              isInverted={inverted}
               srcSet={`https://i.imgur.com/SZIavr2l.jpg 640w,
 										 https://i.imgur.com/SZIavr2m.jpg 320w,
 										 https://i.imgur.com/SZIavr2t.jpg 160w`}
@@ -34,19 +36,19 @@ const Home: VoidFunctionComponent = () => {
 										640w`}
               alt="Image"
             />
-          </Displayer>
-          <Displayer
+          </MiniDisplayer>
+          <MiniDisplayer
             buttonChildren={
-              <ButtonLink to="/about" isInverted={true}>
-                Conoce más
+              <ButtonLink to="/about" isInverted={!inverted}>
+                Explorar
               </ButtonLink>
             }
             description="Lorem Ipsum"
-            inverted={false}
+            inverted={inverted}
             title="Nuestros Servicios"
           >
             <Image
-              isInverted={true}
+              isInverted={!inverted}
               srcSet={`https://i.imgur.com/Ql6vzlZl.jpg 640w,
 										 https://i.imgur.com/Ql6vzlZm.jpg 320w,
 										 https://i.imgur.com/Ql6vzlZt.jpg 160w`}
@@ -55,7 +57,7 @@ const Home: VoidFunctionComponent = () => {
 										640w`}
               alt="Image"
             />
-          </Displayer>
+          </MiniDisplayer>
         </Showcase>
       </StyledContainer>
     </>
