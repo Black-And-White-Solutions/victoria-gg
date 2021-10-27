@@ -1,5 +1,11 @@
+import React, { VoidFunctionComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import Container from './Container';
+
+// Styled Components
 
 export const MarkdownEngine = styled(ReactMarkdown)`
   h1,
@@ -49,7 +55,6 @@ export const MarkdownEngine = styled(ReactMarkdown)`
   blockquote {
     padding: 0 0 0 50px;
     margin: 55px 0 33px 0;
-    /* text-align: center; */
     color: rgba(0, 0, 0, 0.68);
     font-family: 'Playfair Display', serif;
     font-size: 30px;
@@ -119,3 +124,57 @@ export const AuthorContainer = styled.div`
   gap: 1rem;
   grid-auto-flow: column;
 `;
+
+// Default Component
+
+export type AuthorProps = {
+  author: {
+    details: string;
+    name: string;
+    thumbnail: string;
+  };
+};
+
+export type BlogEntryProps = {
+  content: string;
+  title: string;
+};
+
+const BlogEntry: VoidFunctionComponent<Partial<AuthorProps> & BlogEntryProps> =
+  ({ author, content, title }) => {
+    return (
+      <Container display={'flex'}>
+        <Padding>
+          <Title>{title}</Title>
+          <Padding>
+            <MarkdownEngine remarkPlugins={[remarkGfm]}>
+              {content}
+            </MarkdownEngine>
+          </Padding>
+          {author !== undefined ? (
+            <AuthorContainer>
+              <Thumbnail src={author?.thumbnail} alt="Thumbnail" />
+              <div>
+                <h2>{author?.name}</h2>
+                <p>{author?.details}</p>
+              </div>
+            </AuthorContainer>
+          ) : (
+            <></>
+          )}
+        </Padding>
+      </Container>
+    );
+  };
+
+BlogEntry.propTypes = {
+  author: PropTypes.shape({
+    details: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+  }),
+  content: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
+export default BlogEntry;

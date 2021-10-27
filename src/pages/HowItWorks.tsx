@@ -1,8 +1,7 @@
 import React, { VoidFunctionComponent } from 'react';
-import Container from '../components/Container';
 
 const HowItWorks: VoidFunctionComponent = () => {
-  return <Container></Container>;
+  return <></>;
 };
 
 export default HowItWorks;
