@@ -42,6 +42,7 @@ export const MarkdownEngine = styled(ReactMarkdown)`
   i,
   a {
     margin-top: 21px;
+    margin-bottom: 8px;
     font-family: 'Lora', serif;
     font-size: 21px;
     letter-spacing: -0.03px;
@@ -102,13 +103,13 @@ export const Padding = styled.div`
   padding: 2rem;
 `;
 
-export const Thumbnail = styled.img`
+const Thumbnail = styled.img`
   width: 4rem;
   height: auto;
   border-radius: 50%;
 `;
 
-export const Title = styled.h1`
+const Title = styled.h1`
   color: #ff5cb9;
   font-family: 'Dancing Script', cursive;
   font-size: 3rem;
@@ -116,7 +117,7 @@ export const Title = styled.h1`
   font-weight: 700;
 `;
 
-export const AuthorContainer = styled.div`
+const AuthorContainer = styled.div`
   display: grid;
   width: fit-content;
   height: fit-content;

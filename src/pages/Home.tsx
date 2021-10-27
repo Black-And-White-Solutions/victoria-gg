@@ -1,8 +1,9 @@
 import React, { VoidFunctionComponent } from 'react';
+import Container from '../components/Container';
 import MiniDisplayer from '../components/Displayer/MiniDisplayer';
 import { ButtonLink, Image } from '../components/Displayer/DisplayerComponents';
 import Carousel from '../components/Carousel/Carousel';
-import { Title, Showcase, StyledContainer } from '../components/HomeComponents';
+import { Title, Showcase } from '../components/HomeComponents';
 import { size } from '../assets/mediaSizes.js';
 
 const { mobileS, tablet } = size;
@@ -13,7 +14,7 @@ const Home: VoidFunctionComponent = () => {
   return (
     <>
       <Carousel />
-      <StyledContainer display={'flex'}>
+      <Container display={'flex'} flow={'column'}>
         <Title>Explora nuestras secciones</Title>
         <Showcase>
           <MiniDisplayer
@@ -59,7 +60,7 @@ const Home: VoidFunctionComponent = () => {
             />
           </MiniDisplayer>
         </Showcase>
-      </StyledContainer>
+      </Container>
     </>
   );
 };

@@ -85,13 +85,15 @@ const ComponentSharedStyles = css<InvertedConditionProps>`
 export const Component = styled.div<InvertedConditionProps>`
   ${ComponentSharedStyles}
   gap: 1.5rem;
-  grid-template-columns: ${props => !props.isInverted ? '2fr 3fr' : '3fr 2fr'};
+  grid-template-columns: ${({ isInverted }) =>
+    isInverted ? '2fr 3fr' : '3fr 2fr'};
 `;
 
 export const MiniComponent = styled.div<InvertedConditionProps>`
   ${ComponentSharedStyles}
   gap: 0.5rem;
-  grid-template-columns: ${props => !props.isInverted ? '1fr 0.75fr' : '0.75fr 1fr'};
+  grid-template-columns: ${({ isInverted }) =>
+    isInverted ? '1fr 0.75fr' : '0.75fr 1fr'};
 `;
 
 export const TitleArea = styled.h1<InvertedConditionProps>`
@@ -116,14 +118,15 @@ export const DescriptionArea = styled.p<
   font-size: 1.2em;
   font-weight: 400;
   grid-area: description;
-  text-align: ${props => ( !props.isInverted ? 'left' : 'right')};
+  text-align: ${({ isInverted }) => (isInverted ? 'left' : 'right')};
 `;
 
 export const ButtonArea = styled.div<InvertedConditionProps>`
   display: flex;
   width: 100%;
   align-items: flex-end;
-  justify-content: ${props => ( !props.isInverted ? 'flex-start' : 'flex-end')};
+  justify-content: ${({ isInverted }) =>
+    isInverted ? 'flex-start' : 'flex-end'};
   grid-area: button;
 
   @media screen and (max-width: ${tablet}) {
@@ -134,7 +137,8 @@ export const ButtonArea = styled.div<InvertedConditionProps>`
 export const ContentArea = styled.div<InvertedConditionProps>`
   display: flex;
   align-items: center;
-  justify-content: ${props => ( !props.isInverted ? 'flex-end' : 'flex-start')};
+  justify-content: ${({ isInverted }) =>
+    isInverted ? 'flex-end' : 'flex-start'};
   grid-area: content;
 
   @media screen and (max-width: ${tablet}) {
@@ -157,6 +161,13 @@ const baseButtonStyles = css<InvertedConditionProps & CustomButtonProps>`
   font-weight: 600;
   outline: none;
   text-decoration: none;
+  transition: ease 0.5s;
+
+  &:hover {
+    background: #fff;
+    color: #f11593;
+    transition: ease 0.5s;
+  }
 
   @media screen and (max-width: ${tablet}) {
     width: 12rem;
@@ -175,5 +186,5 @@ export const ButtonLink = styled(Link)`
 export const Image = styled.img<InvertedConditionProps>`
   width: 100%;
   height: fit-content;
-  border-radius: ${props => ( !props.isInverted ? '75px 0px' : '0px 75px')};
+  border-radius: ${({ isInverted }) => (isInverted ? '75px 0px' : '0px 75px')};
 `;

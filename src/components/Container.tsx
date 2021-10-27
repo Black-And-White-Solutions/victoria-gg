@@ -2,15 +2,17 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { maxMargin } from '../assets/GenericCSS';
 
-type ContainerDisplay = {
+type ContainerProps = {
   display?: 'flex' | 'grid';
+  flow?: 'column' | 'row';
 };
 
-const Container = styled.div<ContainerDisplay>`
+const Container = styled.div<ContainerProps>`
   display: ${props => props.display};
-  justify-content: center;
   ${maxMargin}
-  grid-auto-flow: row;
+  flex-direction: ${props => props.flow};
+  justify-content: center;
+  grid-auto-flow: ${props => props.flow};
 `;
 
 export const HeightContainer = styled(Container)`
@@ -20,11 +22,13 @@ export const HeightContainer = styled(Container)`
 
 Container.defaultProps = {
   display: 'grid',
+  flow: 'row',
 };
 
 Container.propTypes = {
   children: PropTypes.node.isRequired,
   display: PropTypes.oneOf(['flex', 'grid']),
+  flow: PropTypes.oneOf(['column', 'row']),
 };
 
 export default Container;

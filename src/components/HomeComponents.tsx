@@ -1,14 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import Container from './Container';
-
-export const StyledContainer = styled(Container)`
-  flex-direction: column;
-  align-items: center;
-`;
 
 export const Title = styled.div`
-  width: 80%;
+  width: auto;
   padding: 2rem;
   margin: 2rem;
   margin-bottom: 8px;
