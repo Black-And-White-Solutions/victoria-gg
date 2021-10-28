@@ -1,6 +1,7 @@
 import React, {
   useState,
   ChangeEventHandler,
+  MouseEvent,
   VoidFunctionComponent,
 } from 'react';
 import { ButtonHTML } from '../Displayer/DisplayerComponents';
@@ -60,6 +61,23 @@ const Form: VoidFunctionComponent = () => {
     referalState: '',
   });
 
+  const confirmEntriesNotEmpty: (arg0: {}, arg1?: [string]) => boolean = (
+    object,
+    exclude,
+  ) => {
+    return exclude !== undefined
+      ? Object.entries(object)
+          .filter(x => exclude.indexOf(x[0]) === -1)
+          .every(x => x[1])
+      : Object.values(object).every(Boolean);
+  };
+
+  const validateEmail: (arg0: string) => boolean = email => {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const handleChange: (input: string) => ChangeEventHandler<HTMLInputElement> =
     input => e => {
       setFormData({
@@ -67,6 +85,16 @@ const Form: VoidFunctionComponent = () => {
         [input]: e.target.value,
       });
     };
+
+  const handleSubmit: (e: MouseEvent) => void = e => {
+    e.preventDefault();
+    console.log(`Email Válido: ${validateEmail(formData.mail)}`);
+    console.log(
+      `Todas las entradas llenas: ${confirmEntriesNotEmpty(formData, [
+        'childrenNumber',
+      ])}`,
+    );
+  };
 
   return (
     <FormWrapper>
@@ -215,7 +243,7 @@ const Form: VoidFunctionComponent = () => {
           onChange={handleChange('referalState')}
         />
       </FormDoubleInput>
-      <ButtonHTML>Enviar Solicitud</ButtonHTML>
+      <ButtonHTML onClick={handleSubmit}>Enviar Solicitud</ButtonHTML>
     </FormWrapper>
   );
 };
