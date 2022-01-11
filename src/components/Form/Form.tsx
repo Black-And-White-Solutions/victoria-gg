@@ -1,5 +1,6 @@
 import React, {
   useState,
+  useEffect,
   ChangeEventHandler,
   MouseEvent,
   VoidFunctionComponent,
@@ -11,6 +12,7 @@ import {
   FormWrapper,
   TitleSmall,
 } from './FormComponents';
+import * as FormFunc from './FormFunctions';
 
 type FormDataProps = {
   firstName: string;
@@ -61,25 +63,13 @@ const Form: VoidFunctionComponent = () => {
     referalState: '',
   });
 
-  const confirmEntriesNotEmpty: (arg0: {}, arg1?: [string]) => boolean = (
-    object,
-    exclude,
-  ) => {
-    return exclude !== undefined
-      ? Object.entries(object)
-          .filter(x => exclude.indexOf(x[0]) === -1)
-          .every(x => x[1])
-      : Object.values(object).every(Boolean);
-  };
-
-  const validateEmail: (arg0: string) => boolean = email => {
-    const re =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  };
+  const [formClasses, setFormClasses] = useState<{ [index: string]: boolean }>(
+    FormFunc.createFormClassesObject(formData),
+  );
 
   const handleChange: (input: string) => ChangeEventHandler<HTMLInputElement> =
     input => e => {
+      formClasses[input] = false;
       setFormData({
         ...formData,
         [input]: e.target.value,
@@ -88,13 +78,18 @@ const Form: VoidFunctionComponent = () => {
 
   const handleSubmit: (e: MouseEvent) => void = e => {
     e.preventDefault();
-    console.log(`Email Válido: ${validateEmail(formData.mail)}`);
-    console.log(
-      `Todas las entradas llenas: ${confirmEntriesNotEmpty(formData, [
-        'childrenNumber',
-      ])}`,
-    );
+    const tempFormClasses = formClasses;
+
+    if (!FormFunc.confirmEntriesNotEmpty(formData, ['childrenNumber']))
+      FormFunc.markEmptyEntries(formData, tempFormClasses, ['childrenNumber']);
+
+    if (!FormFunc.validateEmail(formData.mail))
+      FormFunc.markBadEmail('mail', tempFormClasses);
+
+    setFormClasses(tempFormClasses);
   };
+
+  useEffect(() => {}, [formClasses]);
 
   return (
     <FormWrapper>
@@ -105,12 +100,14 @@ const Form: VoidFunctionComponent = () => {
           placeholder={'Nombre'}
           type={'text'}
           onChange={handleChange('firstName')}
+          isWrong={formClasses.firstName}
         />
         <FormInputTemplate
           id={'lastName'}
           placeholder={'Apellido'}
           type={'text'}
           onChange={handleChange('lastName')}
+          isWrong={formClasses.lastName}
         />
       </FormDoubleInput>
       <FormDoubleInput>
@@ -119,18 +116,21 @@ const Form: VoidFunctionComponent = () => {
           placeholder={'Fecha de nacimiento'}
           type={'date'}
           onChange={handleChange('birthdate')}
+          isWrong={formClasses.birthdate}
         />
         <FormInputTemplate
           id={'phone'}
           placeholder={'Número de Teléfono'}
           type={'phone'}
           onChange={handleChange('phone')}
+          isWrong={formClasses.phone}
         />
       </FormDoubleInput>
       <FormInputTemplate
         id={'id'}
         placeholder={'Cedula de Identidad'}
         onChange={handleChange('id')}
+        isWrong={formClasses.id}
         type={'text'}
       />
       <FormInputTemplate
@@ -138,6 +138,7 @@ const Form: VoidFunctionComponent = () => {
         placeholder={'Correo Electrónico'}
         type={'email'}
         onChange={handleChange('mail')}
+        isWrong={formClasses.mail}
       />
       <FormDoubleInput>
         <FormInputTemplate
@@ -145,12 +146,14 @@ const Form: VoidFunctionComponent = () => {
           placeholder={'Estado Civíl'}
           type={'text'}
           onChange={handleChange('civilianState')}
+          isWrong={formClasses.civilianState}
         />
         <FormInputTemplate
           id={'childrenNumber'}
           placeholder={'Número de hijos'}
           type={'number'}
           onChange={handleChange('childrenNumber')}
+          isWrong={formClasses.childrenNumber}
         />
       </FormDoubleInput>
       <FormInputTemplate
@@ -158,6 +161,7 @@ const Form: VoidFunctionComponent = () => {
         placeholder={'Dirección'}
         type={'text'}
         onChange={handleChange('address')}
+        isWrong={formClasses.address}
       />
       <FormDoubleInput>
         <FormInputTemplate
@@ -165,12 +169,14 @@ const Form: VoidFunctionComponent = () => {
           placeholder={'Ciudad'}
           type={'text'}
           onChange={handleChange('city')}
+          isWrong={formClasses.city}
         />
         <FormInputTemplate
           id={'state'}
           placeholder={'Estado'}
           type={'text'}
           onChange={handleChange('state')}
+          isWrong={formClasses.state}
         />
       </FormDoubleInput>
       <TitleSmall>Información Bancaria</TitleSmall>
@@ -179,6 +185,7 @@ const Form: VoidFunctionComponent = () => {
         placeholder={'Número de Cuenta'}
         type={'text'}
         onChange={handleChange('bankAccountNumber')}
+        isWrong={formClasses.bankAccountNumber}
       />
       <FormDoubleInput>
         <FormInputTemplate
@@ -186,12 +193,14 @@ const Form: VoidFunctionComponent = () => {
           placeholder={'Tipo de Cuenta'}
           type={'Text'}
           onChange={handleChange('bankAccountType')}
+          isWrong={formClasses.bankAccountType}
         />
         <FormInputTemplate
           id={'bankAccountBank'}
           placeholder={'Banco'}
           type={'text'}
           onChange={handleChange('bankAccountBank')}
+          isWrong={formClasses.bankAccountBank}
         />
       </FormDoubleInput>
       <TitleSmall>Información del patrocinante o asociado</TitleSmall>
@@ -201,12 +210,14 @@ const Form: VoidFunctionComponent = () => {
           placeholder={'Nombre del asociado'}
           type={'text'}
           onChange={handleChange('referalFirstName')}
+          isWrong={formClasses.referalFirstName}
         />
         <FormInputTemplate
           id={'referalLastName'}
           placeholder={'Apellido del Asociado'}
           type={'text'}
           onChange={handleChange('referalLastName')}
+          isWrong={formClasses.referalLastName}
         />
       </FormDoubleInput>
       <FormDoubleInput>
@@ -215,12 +226,14 @@ const Form: VoidFunctionComponent = () => {
           placeholder={'Cedula de Identidad del Asociado'}
           type={'text'}
           onChange={handleChange('referalId')}
+          isWrong={formClasses.referalId}
         />
         <FormInputTemplate
           id={'referalCode'}
           placeholder={'Código del Asociado'}
           type={'text'}
           onChange={handleChange('referalCode')}
+          isWrong={formClasses.referalCode}
         />
       </FormDoubleInput>
       <FormInputTemplate
@@ -228,6 +241,7 @@ const Form: VoidFunctionComponent = () => {
         placeholder={'Dirección del Asociado'}
         type={'text'}
         onChange={handleChange('referalAddress')}
+        isWrong={formClasses.referalAddress}
       />
       <FormDoubleInput>
         <FormInputTemplate
@@ -235,12 +249,14 @@ const Form: VoidFunctionComponent = () => {
           placeholder={'Ciudad del Asociado'}
           type={'text'}
           onChange={handleChange('referalCity')}
+          isWrong={formClasses.referalCity}
         />
         <FormInputTemplate
           id={'referalState'}
           placeholder={'Estado del Asociado'}
           type={'text'}
           onChange={handleChange('referalState')}
+          isWrong={formClasses.referalState}
         />
       </FormDoubleInput>
       <ButtonHTML onClick={handleSubmit}>Enviar Solicitud</ButtonHTML>

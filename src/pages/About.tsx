@@ -1,41 +1,15 @@
-import React, { ReactChild, VoidFunctionComponent } from 'react';
-import Container from '../components/Container';
-import Displayer from '../components/Displayer/Displayer';
-import { ButtonLink, Image } from '../components/Displayer/DisplayerComponents';
-import { size } from '../assets/mediaSizes';
-import listOfAbout from '../assets/JSONs/About.json';
-
-const { tablet, mobileS } = size;
+import React, { VoidFunctionComponent } from 'react';
+import BlogEntry from '../components/BlogEntryComponents';
 
 const About: VoidFunctionComponent = () => {
-  const aboutCards: ReactChild[] = [];
-  listOfAbout.forEach((item, index) => {
-    const indexIsEven: boolean = index % 2 === 0;
-    aboutCards.push(
-      <Displayer
-        buttonChildren={
-          <ButtonLink to={`blog/${item.blogId}`} isInverted={indexIsEven}>
-            {item.buttonPlaceholder}
-          </ButtonLink>
-        }
-        description={item.description}
-        inverted={!indexIsEven}
-        key={index}
-        title={item.title}
-      >
-        <Image
-          isInverted={indexIsEven}
-          srcSet={`${item.imgSrcSetL} 640w,
-									 ${item.imgSrcSetM} 320w,
-									 ${item.imgSrcSetS} 160w`}
-          sizes={`(max-width: ${mobileS}) 160px, (max-width: ${tablet}) 320w, 640w`}
-          alt="Image"
-        />
-      </Displayer>,
-    );
-  });
-
-  return <Container>{aboutCards}</Container>;
+  return (
+    <BlogEntry
+      content={
+        '# Nuestra Visión :\n  Victoria G&G es una empresa familiar dedicada a la fabricación de productos de aseo personal y que lleva bienestar físico y financiero a las familias, brindando productos de altísima calidad que cuida el medio ambiente y la salud convirtiéndose así en la distribuidora nacional e internacional más importante del país\n\n\n# Nuestra Misión\n  ## GENTE: \n  Inspiramos para ser los mejores, ofrecemos el mejor lugar para trabajar por que mantenemos un sitio de paz , camaradería y liderazgo\n\n  ## PORTAFOLIO: \n  Ofrecemos al mundo un portafolio de la mejor marca de cuidado personal y cuidado del hogar  que anticipe y cumpla con los deseos y necesidades de las personas\n\n  ## SOCIOS: \n  Fomentamos una red de socios inspirados en lealtad, respeto, integridad y trabajo en equipo.\n\n  ## PLANETA: \n  Somos personas responsables que ayudan a sostener el planeta y hacemos comunidades sostenibles\n\n  ## UTILIDADES: \n  Agilizar beneficios para los accionistas cumpliendo con todas nuestras responsabilidades\n\n  ## PRODUCTIVIDAD:\nSomos una corporación efectiva, rápida en acción, elegante y accesible\n\n# Valores de Nuestra Empresa\n\n1. Liderazgo: Solo con valores se crea un mundo mejor\n\n2. Integridad: Hazlo bien aunque nadie te mire\n\n3. Responsabilidad: Si debe hacerse... Yo me encargo\n\n4. Pasión: Comprometerse con la mente y el corazón\n\n5. Diversidad: Tan inclusivo como nuestra marca\n\n6. Calidad: Si lo hacemos nosotros entonces es bueno'
+      }
+      title={'Acerca de Nosotros'}
+    />
+  );
 };
 
 export default About;

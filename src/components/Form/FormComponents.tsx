@@ -44,6 +44,11 @@ export const FormInput = styled.input`
   &:focus {
     outline: none;
   }
+
+  &.wrong {
+    border: solid 1px #c46210;
+    color: #c46210;
+  }
 `;
 
 export const FormInputWrapper = styled.div`
@@ -57,6 +62,10 @@ export const FormInputWrapper = styled.div`
 
 export const FormLabel = styled.label`
   color: #575155;
+
+  &.wrong {
+    color: #c46210;
+  }
 `;
 
 export const TitleSmall = styled.h2`
@@ -73,9 +82,11 @@ export const TitleSmall = styled.h2`
 // Function Components
 
 type FormInputProps = {
+  className?: string;
   id: string;
+  isWrong?: boolean;
   name?: string;
-  onChange?: ChangeEventHandler<HTMLInputElement> | undefined;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
   type: string;
   value?: string;
@@ -83,10 +94,17 @@ type FormInputProps = {
 
 export const FormInputTemplate: VoidFunctionComponent<FormInputProps> =
   props => {
+    const classNameValue: () => string = () => {
+      return props.isWrong ? 'wrong' : '';
+    };
+
     return (
       <FormInputWrapper>
-        <FormLabel htmlFor={props.id}>{props.placeholder}</FormLabel>
+        <FormLabel className={props.className} htmlFor={props.id}>
+          {props.placeholder}
+        </FormLabel>
         <FormInput
+          className={props.isWrong ? classNameValue() : ''}
           id={props.id}
           name={props.name}
           onChange={props.onChange}
@@ -105,7 +123,9 @@ FormInputTemplate.defaultProps = {
 };
 
 FormInputTemplate.propTypes = {
+  className: PropTypes.string,
   id: PropTypes.string.isRequired,
+  isWrong: PropTypes.bool,
   name: PropTypes.string,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,

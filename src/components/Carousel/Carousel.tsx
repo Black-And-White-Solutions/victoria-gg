@@ -1,5 +1,4 @@
 import React, { ReactChild, VoidFunctionComponent } from 'react';
-import { Link } from 'react-router-dom';
 import { CarouselProvider, Slide, Slider } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import {
@@ -21,13 +20,11 @@ const Carousel: VoidFunctionComponent = () => {
           <Text numberOfLines={4}>{item.description}</Text>
         </TextArea>
         <ImageSlide key={`ImageSlide${index + 1}`}>
-          <Link to={`blog/${item.blogId}`}>
-            <Image
-              src={item.image}
-              alt={`Image N°${index + 1}`}
-              key={`Image${index + 1}`}
-            />
-          </Link>
+          <Image
+            src={item.image}
+            alt={`Image N°${index + 1}`}
+            key={`Image${index + 1}`}
+          />
         </ImageSlide>
       </Slide>,
     );
@@ -36,6 +33,7 @@ const Carousel: VoidFunctionComponent = () => {
   return (
     <CarouselProvider
       infinite={true}
+      interval={10000}
       isPlaying={true}
       naturalSlideWidth={512 * 3}
       naturalSlideHeight={512}
