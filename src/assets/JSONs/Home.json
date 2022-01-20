@@ -7,7 +7,7 @@
   },
   {
     "blogId": "CarouselEntry2",
-    "description": "¡Con nuestros productos de aseo general, mantener el orden en tu casa nunca más será una tarea tediosa! Victoria G&G es una empresa familiar que busca brindar el máximo bienestar a nuestros clientes, y eso incluye por supuesto, a mantener todo su ambiente en orden!",
+    "description": "En Victoria G&G somos conscientes de lo importante que es el cuidado de la piel. Es por eso que nuestro equipo se ha encargado de desarrollar una serie de productos de la mejor calidad con especial escrupulosidad orientado al cuidado y de la piel.",
     "image": "https://www.consalud.es/estetic/uploads/s1/11/64/35/7/el-cuidado-de-la-piel-siempre-es-importante-independientemente-de-la-edad-foto-freepik.jpeg",
     "title": "Pioneros en el Cuidado de la piel"
   },
@@ -20,13 +20,19 @@
   {
     "blogId": "CarouselEntry4",
     "description": "En Victoria G&G somos conscientes de las nuevas normas de bioseguridad que debemos tener presente para asegurar el bienestar de nuestros clientes. Por eso trabajamos arduamente para garantizar la máxima protección viral y bacteriana a nuestros clientes, y juntos mantenernos seguros contra la propagación de enfermedades.",
-    "image": "https://www.houstonmethodist.org/-/media/images/contenthub/article-images/infectious-disease/hub_handwashing_social.jpg?mw=1382&hash=834247E75386EF88E99B87A8E7F754F6",
+    "image": "https://www.houstonmethodist.org/-/media/images/contenthub/article-images/infectious-disease/hub_handwashing_social.jpg",
     "title": "¡Mantente Seguro Con Nuestros Productos De Aseo!"
   },
   {
     "blogId": "CarouselEntry5",
-    "description": "Lorem nisi quae impedit possimus eveniet consequatur at ab Dolore voluptates quos voluptatum molestiae qui Similique corrupti optio quas dolores quisquam magnam. Elit non dolores cumque nulla tenetur impedit? Iure",
+    "description": "Victoria G&G no ha descuidado al cuidado de aquellos caballeros que desean demostrar su consideración por el estado de la piel. Al usar nuestros productos puedes dedicarte a disponer tus energías en otras tareas confiando en que el equipo de Victoria G&G se dedica al cuidado de su piel.",
     "image": "https://media.revistagq.com/photos/6024f64d40a1d479f12b5fe7/16:9/w_2560%2Cc_limit/GettyImages-83865377.jpg",
     "title": "¡Rompiendo barreras en el Cuidado Masculino!"
+  },
+  {
+    "blogId": "CarouselEntry6",
+    "description": "Desde Victoria G&G te ofrecemos la posibilidad de desarrollarte en el espíritu empresarial junto con todo un staff encargado de renovar las economías personales y grupales a través de técnicas mercantiles recursivas y unitarias. ¡No esperes más, y unetenos!",
+    "image": "https://www.jovenes.nestle.com/co/sites/site.prod.jovenes.nestle.com/files/co/2019-03/EMPRENDIMIENTO.jpg",
+    "title": "Emprendimiento Unitario"
   }
 ]

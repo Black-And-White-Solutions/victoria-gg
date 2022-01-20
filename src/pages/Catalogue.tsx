@@ -1,7 +1,7 @@
 import React, { ReactChild, VoidFunctionComponent } from 'react';
 import Container from '../components/Container';
 import Displayer from '../components/Displayer/Displayer';
-import { ButtonLink, Image } from '../components/Displayer/DisplayerComponents';
+import { Image } from '../components/Displayer/DisplayerComponents';
 import { size } from '../assets/mediaSizes';
 import listOfCatalogue from '../assets/JSONs/Catalogue.json';
 
@@ -13,11 +13,6 @@ const Catalogue: VoidFunctionComponent = () => {
     const indexIsEven: boolean = index % 2 === 0;
     aboutCards.push(
       <Displayer
-        buttonChildren={
-          <ButtonLink to={`blog/${item.blogId}`} isInverted={indexIsEven}>
-            {item.buttonPlaceholder}
-          </ButtonLink>
-        }
         description={item.description}
         inverted={!indexIsEven}
         key={index}

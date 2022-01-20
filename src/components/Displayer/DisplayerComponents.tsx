@@ -1,4 +1,4 @@
-import { ReactChild, ReactNode } from 'react';
+import React, { ReactChild, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink as Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
@@ -9,7 +9,7 @@ const { desktopS, tablet, mobileM } = size;
 
 // Displayer and MiniDisplayer shared props.
 export type ComponentTypeProps = {
-  buttonChildren: ReactChild[] | ReactNode;
+  buttonChildren?: ReactChild[] | ReactNode;
   children?: ReactChild[] | ReactNode;
   description: string;
   inverted?: boolean;
@@ -18,6 +18,7 @@ export type ComponentTypeProps = {
 };
 
 export const ComponentDefaultProps = {
+  buttonChildren: <></>,
   description: 'Description',
   inverted: false,
   title: 'Title',

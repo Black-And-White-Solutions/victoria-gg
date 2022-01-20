@@ -29,7 +29,7 @@ export const MarkdownEngine = styled(ReactMarkdown)`
 
   h2 {
     padding: 0;
-    margin: 56px 0 -13px -1.883px;
+    margin: 24px 0 -6px -1.883px;
     font-family: 'Playfair Display', sans-serif;
     font-size: 26px;
     font-weight: 700;
@@ -41,8 +41,8 @@ export const MarkdownEngine = styled(ReactMarkdown)`
   p,
   i,
   a {
-    margin-top: 21px;
-    margin-bottom: 8px;
+    margin-top: 8px;
+    margin-bottom: 28px;
     font-family: 'Lora', serif;
     font-size: 21px;
     letter-spacing: -0.03px;

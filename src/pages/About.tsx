@@ -21,17 +21,17 @@ Agilizar beneficios para los accionistas cumpliendo con todas nuestras responsab
 Somos una corporación efectiva, rápida en acción, elegante y accesible.\ 
 
 # Valores de Nuestra Empresa
-1. Liderazgo: Solo con valores se crea un mundo mejor
+**1. Liderazgo:** Solo con valores se crea un mundo mejor.
 
-2. Integridad: Hazlo bien aunque nadie te mire
+**2. Integridad:** Hazlo bien aunque nadie te mire.
 
-3. Responsabilidad: Si debe hacerse... Yo me encargo
+**3. Responsabilidad:** Si debe hacerse... Yo me encargo.
 
-4. Pasión: Comprometerse con la mente y el corazón
+**4. Pasión:** Comprometerse con la mente y el corazón.
 
-5. Diversidad: Tan inclusivo como nuestra marca
+**5. Diversidad:** Tan inclusivo como nuestra marca.
 
-6. Calidad: Si lo hacemos nosotros entonces es bueno`;
+**6. Calidad:** Si lo hacemos nosotros entonces es bueno.`;
 
 /* eslint-enable */
 
