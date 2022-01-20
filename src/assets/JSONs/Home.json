@@ -8,19 +8,25 @@
   {
     "blogId": "CarouselEntry2",
     "description": "¡Con nuestros productos de aseo general, mantener el orden en tu casa nunca más será una tarea tediosa! Victoria G&G es una empresa familiar que busca brindar el máximo bienestar a nuestros clientes, y eso incluye por supuesto, a mantener todo su ambiente en orden!",
-    "image": "https://images.pexels.com/photos/5893069/pexels-photo-5893069.jpeg",
-    "title": "¡Mantén Tu Casa En Perfecto Orden!"
+    "image": "https://www.consalud.es/estetic/uploads/s1/11/64/35/7/el-cuidado-de-la-piel-siempre-es-importante-independientemente-de-la-edad-foto-freepik.jpeg",
+    "title": "Pioneros en el Cuidado de la piel"
   },
   {
     "blogId": "CarouselEntry3",
     "description": "En Victoria G&G buscamos mantener el bienestar de la familia por encima de todo, por eso hemos decidido adoptar una postura empresarial inclinada a la familia, y demostrarles a nuestros clientes y/o asociados un lado más humano con el que entrar en contacto, sin tener que sacrificar la innovación y el vanguardismo que nos caracteriza.",
-    "image": "https://images.pexels.com/photos/4259140/pexels-photo-4259140.jpeg",
+    "image": "https://image.shutterstock.com/image-photo/hands-cut-out-paper-silhouette-260nw-1774528058.jpg",
     "title": "¡Somos Una Empresa Familiar!"
   },
   {
     "blogId": "CarouselEntry4",
     "description": "En Victoria G&G somos conscientes de las nuevas normas de bioseguridad que debemos tener presente para asegurar el bienestar de nuestros clientes. Por eso trabajamos arduamente para garantizar la máxima protección viral y bacteriana a nuestros clientes, y juntos mantenernos seguros contra la propagación de enfermedades.",
-    "image": "https://images.pexels.com/photos/3736403/pexels-photo-3736403.jpeg",
+    "image": "https://www.houstonmethodist.org/-/media/images/contenthub/article-images/infectious-disease/hub_handwashing_social.jpg?mw=1382&hash=834247E75386EF88E99B87A8E7F754F6",
     "title": "¡Mantente Seguro Con Nuestros Productos De Aseo!"
+  },
+  {
+    "blogId": "CarouselEntry5",
+    "description": "Lorem nisi quae impedit possimus eveniet consequatur at ab Dolore voluptates quos voluptatum molestiae qui Similique corrupti optio quas dolores quisquam magnam. Elit non dolores cumque nulla tenetur impedit? Iure",
+    "image": "https://media.revistagq.com/photos/6024f64d40a1d479f12b5fe7/16:9/w_2560%2Cc_limit/GettyImages-83865377.jpg",
+    "title": "¡Rompiendo barreras en el Cuidado Masculino!"
   }
 ]

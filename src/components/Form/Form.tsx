@@ -5,6 +5,7 @@ import React, {
   MouseEvent,
   VoidFunctionComponent,
 } from 'react';
+import emailjs from '@emailjs/browser';
 import { ButtonHTML } from '../Displayer/DisplayerComponents';
 import {
   FormDoubleInput,
@@ -76,8 +77,33 @@ const Form: VoidFunctionComponent = () => {
       });
     };
 
-  const handleSubmit: (e: MouseEvent) => void = e => {
+  const sendEmail = () => {
+    console.log(formData);
+
+    emailjs
+      .send(
+        'victoria_gg_contact',
+        'victoria_gg_template',
+        formData,
+        'user_ggIETGBrdyPyMlsHnJfKq',
+      )
+      .then(
+        result => {
+          console.log('SUCCESS!', result.status, result.text);
+          alert(
+            `¡Su información fue enviada exitosamente!\nPronto nos contactaremos con usted.`,
+          );
+        },
+        error => {
+          console.log('FAILED...', error.text);
+          alert(`Algo salio mal, intentelo de nuevo más tarde.`);
+        },
+      );
+  };
+
+  const handleSubmit = () => (e: MouseEvent) => {
     e.preventDefault();
+
     const tempFormClasses = formClasses;
 
     if (!FormFunc.confirmEntriesNotEmpty(formData, ['childrenNumber']))
@@ -85,6 +111,10 @@ const Form: VoidFunctionComponent = () => {
 
     if (!FormFunc.validateEmail(formData.mail))
       FormFunc.markBadEmail('mail', tempFormClasses);
+
+    if (FormFunc.confirmEntriesNotEmpty(formData, ['childrenNumber'])) {
+      if (FormFunc.validateEmail(formData.mail)) sendEmail();
+    }
 
     setFormClasses(tempFormClasses);
   };
@@ -259,7 +289,7 @@ const Form: VoidFunctionComponent = () => {
           isWrong={formClasses.referalState}
         />
       </FormDoubleInput>
-      <ButtonHTML onClick={handleSubmit}>Enviar Solicitud</ButtonHTML>
+      <ButtonHTML onClick={handleSubmit()}>Enviar Solicitud</ButtonHTML>
     </FormWrapper>
   );
 };

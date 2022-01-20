@@ -20,10 +20,10 @@ const Displayer: VoidFunctionComponent<ComponentTypeProps> = ({
   return (
     <Component isInverted={inverted}>
       <TitleArea isInverted={inverted}>{title}</TitleArea>
-      <DescriptionArea isInverted={inverted} numberOfLines={14}>
+      <DescriptionArea isInverted={!inverted} numberOfLines={14}>
         {description}
       </DescriptionArea>
-      <ButtonArea isInverted={inverted}>{buttonChildren}</ButtonArea>
+      <ButtonArea isInverted={!inverted}>{buttonChildren}</ButtonArea>
       <ContentArea isInverted={inverted}>{children}</ContentArea>
     </Component>
   );

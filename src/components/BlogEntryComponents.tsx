@@ -65,6 +65,11 @@ export const MarkdownEngine = styled(ReactMarkdown)`
     overflow-wrap: break-word;
   }
 
+  ol,
+  ul {
+    padding-left: 18px;
+  }
+
   code {
     padding: 3px 5px;
     background: rgba(0, 0, 0, 0.05);

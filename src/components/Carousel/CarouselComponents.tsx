@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { lineClamping, maxMargin } from '../../assets/GenericCSS';
 
 export const Image = styled.img`
@@ -11,7 +11,13 @@ export const ImageSlide = styled.div`
   left: 50%;
   width: inherit;
   height: inherit;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
+`;
+
+export const CarouselButton = css`
+  position: absolute;
+  width: 10%;
+  height: inherit;
 `;
 
 export const TextArea = styled.div`
