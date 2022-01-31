@@ -19,7 +19,7 @@ const Home: VoidFunctionComponent = () => {
         <Showcase>
           <MiniDisplayer
             buttonChildren={
-              <ButtonLink to="/catalogue" isInverted={inverted}>
+              <ButtonLink to="/catalogue" $isInverted={inverted}>
                 Explorar
               </ButtonLink>
             }
@@ -28,7 +28,7 @@ const Home: VoidFunctionComponent = () => {
             title="Catálogo"
           >
             <Image
-              isInverted={inverted}
+              $isInverted={inverted}
               srcSet={`https://i.imgur.com/SZIavr2l.jpg 640w,
 										 https://i.imgur.com/SZIavr2m.jpg 320w,
 										 https://i.imgur.com/SZIavr2t.jpg 160w`}
@@ -40,7 +40,7 @@ const Home: VoidFunctionComponent = () => {
           </MiniDisplayer>
           <MiniDisplayer
             buttonChildren={
-              <ButtonLink to="/about" isInverted={!inverted}>
+              <ButtonLink to="/about" $isInverted={!inverted}>
                 Explorar
               </ButtonLink>
             }
@@ -49,7 +49,7 @@ const Home: VoidFunctionComponent = () => {
             title="Nuestros Servicios"
           >
             <Image
-              isInverted={!inverted}
+              $isInverted={!inverted}
               srcSet={`https://i.imgur.com/Ql6vzlZl.jpg 640w,
 										 https://i.imgur.com/Ql6vzlZm.jpg 320w,
 										 https://i.imgur.com/Ql6vzlZt.jpg 160w`}

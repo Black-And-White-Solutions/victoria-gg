@@ -1,5 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { size } from '../assets/mediaSizes';
+
+const { tablet } = size;
 
 export const Title = styled.div`
   width: auto;
@@ -58,4 +61,8 @@ export const Showcase = styled.div`
   justify-content: space-evenly;
   margin: 2rem auto;
   gap: 1rem;
+
+  @media screen and (max-width: ${tablet}) {
+    flex-wrap: wrap;
+  }
 `;

@@ -1,6 +1,6 @@
 import React, { VoidFunctionComponent } from 'react';
 import styled, { css } from 'styled-components';
-import { FaInstagram, FaFacebook, FaWhatsapp } from 'react-icons/fa';
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { maxMargin } from '../assets/GenericCSS';
 import { size } from '../assets/mediaSizes';
 
@@ -9,7 +9,7 @@ const { tablet } = size;
 const FooterBar = styled.div`
   ${maxMargin}
   display: flex;
-  height: 5rem;
+  height: 5em;
   align-items: center;
   justify-content: space-between;
   background: #f8f8f8;
@@ -20,13 +20,12 @@ const FooterBar = styled.div`
 `;
 
 const FooterText = styled.p`
-  padding: 0 1.5rem;
+  padding: 0 1.5em;
 `;
 
 const IconStyle = css`
   width: auto;
-  height: 2rem;
-  margin: 0 0.5rem;
+  height: 2em;
   color: #000000;
   transition: ease-in 0.3s;
 
@@ -37,13 +36,12 @@ const IconStyle = css`
 `;
 
 const FooterIcons = styled.div`
-  padding: 0 1.5rem;
+  display: flex;
+  padding: 0 1.5em;
+  gap: 1em;
 `;
 
 const InstagramIcon = styled(FaInstagram)`
-  ${IconStyle}
-`;
-const FacebookIcon = styled(FaFacebook)`
   ${IconStyle}
 `;
 const WhatsappIcon = styled(FaWhatsapp)`
@@ -54,12 +52,19 @@ const Footer: VoidFunctionComponent = () => {
   return (
     <FooterBar>
       <FooterText>
-        Copyrigth © 2021 Victoria G&G. All rights reserved.
+        Copyrigth © 2022 Victoria G&G. All rights reserved.
       </FooterText>
       <FooterIcons>
-        <InstagramIcon />
-        <FacebookIcon />
-        <WhatsappIcon />
+        <a
+          href="https://www.instagram.com/victoria.empresa/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <InstagramIcon />
+        </a>
+        <a href="https://wa.link/zr1vn1" rel="noreferrer" target="_blank">
+          <WhatsappIcon />
+        </a>
       </FooterIcons>
     </FooterBar>
   );

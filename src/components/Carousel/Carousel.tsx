@@ -1,7 +1,8 @@
-import React, { ReactChild, VoidFunctionComponent } from 'react';
+import React, { useState, ReactChild, VoidFunctionComponent } from 'react';
 import { CarouselProvider, Slide, Slider } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import {
+  CarouselContextController,
   Image,
   ImageSlide,
   Text,
@@ -11,10 +12,20 @@ import {
 import listOfSlides from '../../assets/JSONs/Home.json';
 
 const Carousel: VoidFunctionComponent = () => {
+  const [clickFlag, setClickFlag] = useState<boolean>(false);
+
+  const triggerLongCooldown = () => {
+    setClickFlag(true);
+  };
+
   const carouselSlides: ReactChild[] = [];
   listOfSlides.forEach((item, index) => {
     carouselSlides.push(
-      <Slide index={index} key={`Slide${index + 1}`}>
+      <Slide
+        index={index}
+        key={`Slide${index + 1}`}
+        onClick={() => triggerLongCooldown()}
+      >
         <TextArea>
           <TitleArea>{item.title}</TitleArea>
           <Text numberOfLines={4}>{item.description}</Text>
@@ -32,13 +43,15 @@ const Carousel: VoidFunctionComponent = () => {
 
   return (
     <CarouselProvider
-      infinite={true}
-      interval={10000}
-      isPlaying={true}
       naturalSlideWidth={512 * 3}
       naturalSlideHeight={512}
       totalSlides={carouselSlides.length}
     >
+      <CarouselContextController
+        slideNumber={carouselSlides.length}
+        clickFlag={clickFlag}
+        setClickFlag={setClickFlag}
+      />
       <Slider>{carouselSlides}</Slider>
     </CarouselProvider>
   );

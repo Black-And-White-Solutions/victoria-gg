@@ -18,10 +18,12 @@ const MiniDisplayer: VoidFunctionComponent<ComponentTypeProps> = ({
   numberOfLines,
 }) => {
   return (
-    <MiniComponent isInverted={inverted}>
-      <TitleArea isInverted={inverted}>{title}</TitleArea>
-      <ButtonArea isInverted={inverted}>{buttonChildren}</ButtonArea>
-      <ContentArea isInverted={inverted}>{children}</ContentArea>
+    <MiniComponent $isInverted={inverted}>
+      <TitleArea $isInverted={inverted}>{title}</TitleArea>
+      <ButtonArea $isInverted={inverted}>{buttonChildren}</ButtonArea>
+      <ContentArea $isInverted={inverted} $mini>
+        {children}
+      </ContentArea>
     </MiniComponent>
   );
 };

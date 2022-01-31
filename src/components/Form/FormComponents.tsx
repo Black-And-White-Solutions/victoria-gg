@@ -1,30 +1,34 @@
 import React, { VoidFunctionComponent, ChangeEventHandler } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-// import { size } from '../../assets/mediaSizes';
+import styled, { keyframes } from 'styled-components';
+import { size } from '../../assets/mediaSizes';
 
-// const { desktopS, tablet, mobileL } = size;
+const { tablet } = size;
 
 // Styled Components
 
 export const FormWrapper = styled.div`
   display: flex;
   width: 100%;
-  min-width: 512px;
   height: fit-content;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 2rem 0;
   border-radius: 75px 0;
 `;
 
 export const FormDoubleInput = styled.div`
-  display: grid;
+  display: flex;
   width: 88%;
   height: fit-content;
   gap: 1.5rem;
-  grid-template-columns: repeat(2, [col-start] 1fr);
+
+  @media screen and (max-width: ${tablet}) {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0;
+  }
 `;
 
 export const FormInput = styled.input`
@@ -71,12 +75,29 @@ export const FormLabel = styled.label`
 export const TitleSmall = styled.h2`
   align-self: flex-start;
   padding-bottom: 1rem;
-  padding-left: 10%;
+  padding-left: 2rem;
   font-family: 'Dancing Script', cursive;
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.45px;
   line-height: 34.5px;
+`;
+
+const SpinnerKeyframes = keyframes`
+	from {
+		transform: rotate(0deg);
+	} to {
+		transform: rotate(360deg);
+	}
+`;
+
+export const Spinner = styled.div`
+  width: 80px;
+  height: 80px;
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #ff5cb9;
+  animation: ${SpinnerKeyframes} 1s linear infinite;
+  border-radius: 50%;
 `;
 
 // Function Components
@@ -85,6 +106,7 @@ type FormInputProps = {
   className?: string;
   id: string;
   isWrong?: boolean;
+  min?: number;
   name?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
@@ -106,6 +128,7 @@ export const FormInputTemplate: VoidFunctionComponent<FormInputProps> =
         <FormInput
           className={props.isWrong ? classNameValue() : ''}
           id={props.id}
+          min={props.min}
           name={props.name}
           onChange={props.onChange}
           placeholder={props.placeholder}
@@ -126,6 +149,7 @@ FormInputTemplate.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string.isRequired,
   isWrong: PropTypes.bool,
+  min: PropTypes.number,
   name: PropTypes.string,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,

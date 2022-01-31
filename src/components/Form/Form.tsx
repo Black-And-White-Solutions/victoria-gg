@@ -12,6 +12,7 @@ import {
   FormInputTemplate,
   FormWrapper,
   TitleSmall,
+  Spinner,
 } from './FormComponents';
 import * as FormFunc from './FormFunctions';
 
@@ -40,6 +41,8 @@ type FormDataProps = {
 };
 
 const Form: VoidFunctionComponent = () => {
+  const [spinner, setSpinner] = useState(false);
+  const [disabled, setDisabled] = useState(false);
   const [formData, setFormData] = useState<FormDataProps>({
     firstName: '',
     lastName: '',
@@ -71,14 +74,21 @@ const Form: VoidFunctionComponent = () => {
   const handleChange: (input: string) => ChangeEventHandler<HTMLInputElement> =
     input => e => {
       formClasses[input] = false;
-      setFormData({
-        ...formData,
-        [input]: e.target.value,
-      });
+      if (typeof e.target.value === 'number') {
+        setFormData({
+          ...formData,
+          [input]: e.target.value < 0 ? 0 : e.target.value,
+        });
+      } else {
+        setFormData({
+          ...formData,
+          [input]: e.target.value,
+        });
+      }
     };
 
   const sendEmail = () => {
-    console.log(formData);
+    setSpinner(true);
 
     emailjs
       .send(
@@ -89,6 +99,8 @@ const Form: VoidFunctionComponent = () => {
       )
       .then(
         result => {
+          setSpinner(false);
+          setDisabled(true);
           console.log('SUCCESS!', result.status, result.text);
           alert(
             `¡Su información fue enviada exitosamente!\nPronto nos contactaremos con usted.`,
@@ -106,16 +118,24 @@ const Form: VoidFunctionComponent = () => {
 
     const tempFormClasses = formClasses;
 
-    if (!FormFunc.confirmEntriesNotEmpty(formData, ['childrenNumber']))
+    if (!FormFunc.confirmEntriesNotEmpty(formData, ['childrenNumber'])) {
       FormFunc.markEmptyEntries(formData, tempFormClasses, ['childrenNumber']);
-
-    if (!FormFunc.validateEmail(formData.mail))
-      FormFunc.markBadEmail('mail', tempFormClasses);
-
-    if (FormFunc.confirmEntriesNotEmpty(formData, ['childrenNumber'])) {
-      if (FormFunc.validateEmail(formData.mail)) sendEmail();
+      return alert(
+        'Disculpe, pero debe de llenar todas las entradas del formulario',
+      );
     }
 
+    if (!FormFunc.validateEmail(formData.mail)) {
+      FormFunc.markBadEmail('mail', tempFormClasses);
+      return alert('El correo electrónico insertado es inválido');
+    }
+
+    if (!FormFunc.checkNumberNotNegative(formData.childrenNumber))
+      return alert(
+        'Disculpe, pero no puede insertar un numero de hijos negativo',
+      );
+
+    sendEmail();
     setFormClasses(tempFormClasses);
   };
 
@@ -182,6 +202,7 @@ const Form: VoidFunctionComponent = () => {
           id={'childrenNumber'}
           placeholder={'Número de hijos'}
           type={'number'}
+          min={0}
           onChange={handleChange('childrenNumber')}
           isWrong={formClasses.childrenNumber}
         />
@@ -289,7 +310,13 @@ const Form: VoidFunctionComponent = () => {
           isWrong={formClasses.referalState}
         />
       </FormDoubleInput>
-      <ButtonHTML onClick={handleSubmit()}>Enviar Solicitud</ButtonHTML>
+      {spinner ? (
+        <Spinner />
+      ) : (
+        <ButtonHTML disabled={disabled} onClick={handleSubmit()}>
+          {!disabled ? 'Enviar Solicitud' : 'Solicitud Enviada'}
+        </ButtonHTML>
+      )}
     </FormWrapper>
   );
 };

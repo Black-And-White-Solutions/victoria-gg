@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import { lineClamping, LineClampProps } from '../../assets/GenericCSS';
 import { size } from '../../assets/mediaSizes';
 
-const { desktopS, tablet, mobileM } = size;
+const { tablet, mobileM } = size;
 
 // Displayer and MiniDisplayer shared props.
 export type ComponentTypeProps = {
@@ -35,7 +35,11 @@ export const ComponentPropTypes = {
 
 // Styled Componets types
 type InvertedConditionProps = {
-  isInverted?: boolean;
+  $isInverted?: boolean;
+};
+
+type ContentAreaProps = {
+  $mini?: boolean;
 };
 
 type CustomButtonProps = {
@@ -55,7 +59,7 @@ const ComponentSharedStyles = css<InvertedConditionProps>`
   grid-template-rows: auto;
 
   ${props =>
-    props.isInverted &&
+    props.$isInverted &&
     css`
       grid-template-areas:
         'content title'
@@ -63,12 +67,7 @@ const ComponentSharedStyles = css<InvertedConditionProps>`
         'content button';
     `}
 
-  @media screen and (max-width: calc(${desktopS})) {
-    font-size: 14px;
-  }
-
-  @media screen and (max-width: calc(${tablet})) {
-    font-size: 12px;
+  @media screen and (max-width: ${tablet}) {
     grid-template-areas:
       'title'
       'description'
@@ -78,7 +77,7 @@ const ComponentSharedStyles = css<InvertedConditionProps>`
     grid-template-rows: auto;
   }
 
-  @media screen and (max-width: calc(${mobileM} - 1px)) {
+  @media screen and (max-width: ${mobileM}) {
     font-size: 10px;
   }
 `;
@@ -86,27 +85,29 @@ const ComponentSharedStyles = css<InvertedConditionProps>`
 export const Component = styled.div<InvertedConditionProps>`
   ${ComponentSharedStyles}
   gap: 1.5rem;
-  grid-template-columns: ${({ isInverted }) =>
-    isInverted ? '2fr 3fr' : '3fr 2fr'};
+  grid-template-columns: ${({ $isInverted }) =>
+    $isInverted ? '2fr 3fr' : '3fr 2fr'};
 `;
 
 export const MiniComponent = styled.div<InvertedConditionProps>`
   ${ComponentSharedStyles}
   gap: 0.5rem;
-  grid-template-columns: ${({ isInverted }) =>
-    isInverted ? '1fr 0.75fr' : '0.75fr 1fr'};
+  grid-template-columns: ${({ $isInverted }) =>
+    $isInverted ? '1fr 0.75fr' : '0.75fr 1fr'};
+
+  @media screen and (max-width: ${tablet}) {
+    justify-items: center;
+  }
 `;
 
 export const TitleArea = styled.h1<InvertedConditionProps>`
   color: #ff5cb9;
-  font-family: 'Dancing Script', cursive;
-  font-style: normal;
-  font-weight: 700;
+  font: normal normal 700 2rem 'Dancing Script', cursive;
   grid-area: title;
   text-align: start;
 
   ${props =>
-    props.isInverted &&
+    props.$isInverted &&
     css`
       text-align: end;
     `}
@@ -116,18 +117,18 @@ export const DescriptionArea = styled.p<
   InvertedConditionProps & LineClampProps
 >`
   ${lineClamping}
-  font-size: 1.2em;
+  font-size: 1.2rem;
   font-weight: 400;
   grid-area: description;
-  text-align: ${({ isInverted }) => (isInverted ? 'left' : 'right')};
+  text-align: ${({ $isInverted }) => ($isInverted ? 'left' : 'right')};
 `;
 
 export const ButtonArea = styled.div<InvertedConditionProps>`
   display: flex;
   width: 100%;
   align-items: flex-end;
-  justify-content: ${({ isInverted }) =>
-    isInverted ? 'flex-start' : 'flex-end'};
+  justify-content: ${({ $isInverted }) =>
+    $isInverted ? 'flex-start' : 'flex-end'};
   grid-area: button;
 
   @media screen and (max-width: ${tablet}) {
@@ -135,12 +136,21 @@ export const ButtonArea = styled.div<InvertedConditionProps>`
   }
 `;
 
-export const ContentArea = styled.div<InvertedConditionProps>`
+export const ContentArea = styled.div<
+  ContentAreaProps & InvertedConditionProps
+>`
   display: flex;
   align-items: center;
-  justify-content: ${({ isInverted }) =>
-    isInverted ? 'flex-end' : 'flex-start'};
+  justify-content: ${({ $isInverted }) =>
+    $isInverted ? 'flex-end' : 'flex-start'};
   grid-area: content;
+  ${({ $mini }) =>
+    $mini
+      ? `
+				height: 15em;
+				width: 15em;
+			`
+      : ``}
 
   @media screen and (max-width: ${tablet}) {
     place-content: center center;
@@ -155,7 +165,8 @@ const baseButtonStyles = css<InvertedConditionProps & CustomButtonProps>`
   justify-content: center;
   border: none;
   background: #f11593;
-  border-radius: ${({ isInverted }) => (isInverted ? '45px 0px' : '0px 45px')};
+  border-radius: ${({ $isInverted }) =>
+    $isInverted ? '45px 0px' : '0px 45px'};
   color: #fff;
   font-family: Inter, sans-serif;
   font-size: ${({ fontSize }) => fontSize || '1rem'};
@@ -166,6 +177,12 @@ const baseButtonStyles = css<InvertedConditionProps & CustomButtonProps>`
 
   &:hover {
     background: #fff;
+    color: #f11593;
+    transition: ease 0.5s;
+  }
+
+  &:disabled {
+    background: #dedede;
     color: #f11593;
     transition: ease 0.5s;
   }
@@ -187,5 +204,6 @@ export const ButtonLink = styled(Link)`
 export const Image = styled.img<InvertedConditionProps>`
   width: 100%;
   height: fit-content;
-  border-radius: ${({ isInverted }) => (isInverted ? '75px 0px' : '0px 75px')};
+  border-radius: ${({ $isInverted }) =>
+    $isInverted ? '75px 0px' : '0px 75px'};
 `;

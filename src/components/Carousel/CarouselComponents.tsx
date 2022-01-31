@@ -1,3 +1,13 @@
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  Dispatch,
+  SetStateAction,
+  VoidFunctionComponent,
+} from 'react';
+import PropTypes from 'prop-types';
+import { CarouselContext } from 'pure-react-carousel';
 import styled, { css } from 'styled-components';
 import { lineClamping, maxMargin } from '../../assets/GenericCSS';
 
@@ -57,3 +67,59 @@ export const Text = styled.p`
   font-size: 1.2rem;
   line-height: 1.4rem;
 `;
+
+// Function components
+
+type CarouselContextControllerProps = {
+  slideNumber: number;
+  clickFlag: boolean;
+  setClickFlag: Dispatch<SetStateAction<boolean>>;
+};
+
+const SMALL_COOLDOWN = 5000;
+const LONG_COOLDOWN = 15000;
+
+export const CarouselContextController: VoidFunctionComponent<CarouselContextControllerProps> =
+  ({ slideNumber, clickFlag, setClickFlag }) => {
+    const carouselContext = useContext(CarouselContext);
+    const [lever, setLever] = useState(false);
+    const { state, setStoreState } = carouselContext;
+
+    const sleep = (milliseconds: number): Promise<void> => {
+      return new Promise(resolve => setTimeout(resolve, milliseconds));
+    };
+
+    let cooldownTime = SMALL_COOLDOWN;
+
+    const cooldown = async () => {
+      await sleep(cooldownTime).then(() => {
+        setLever(!lever);
+        return state.currentSlide === slideNumber - 1
+          ? setStoreState({ currentSlide: 0 })
+          : setStoreState({ currentSlide: state.currentSlide + 1 });
+      });
+    };
+
+    useEffect(() => {
+      carouselContext.subscribe(cooldown);
+
+      if (clickFlag) {
+        setClickFlag(false);
+        cooldownTime = LONG_COOLDOWN;
+      }
+
+      cooldown().then(() => {
+        cooldownTime = SMALL_COOLDOWN;
+      });
+
+      return () => carouselContext.unsubscribe(cooldown);
+    }, [lever]);
+
+    return <></>;
+  };
+
+CarouselContextController.propTypes = {
+  slideNumber: PropTypes.number.isRequired,
+  clickFlag: PropTypes.bool.isRequired,
+  setClickFlag: PropTypes.func.isRequired,
+};

@@ -19,7 +19,7 @@ const Catalogue: VoidFunctionComponent = () => {
         title={item.title}
       >
         <Image
-          isInverted={indexIsEven}
+          $isInverted={indexIsEven}
           srcSet={`${item.imgSrcSetL} 640w,
 									 ${item.imgSrcSetM} 320w,
 									 ${item.imgSrcSetS} 160w`}

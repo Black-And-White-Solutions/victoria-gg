@@ -20,6 +20,10 @@ export const validateEmail: (arg0: string) => boolean = email => {
   return re.test(String(email).toLowerCase());
 };
 
+export const checkNumberNotNegative: (arg0: number) => boolean = number => {
+  return number > 0;
+};
+
 export const markBadEmail: (
   arg0: string,
   arg1: { [index: string]: boolean },
