@@ -112,7 +112,7 @@ export const CarouselContextController: VoidFunctionComponent<CarouselContextCon
         cooldownTime = SMALL_COOLDOWN;
       });
 
-      return () => carouselContext.unsubscribe(cooldown);
+      return carouselContext.unsubscribe(cooldown);
     }, [lever]);
 
     return <></>;

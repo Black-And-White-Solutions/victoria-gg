@@ -12,7 +12,7 @@ import HowItWorks from '../pages/HowItWorks';
 import Catalogue from '../pages/Catalogue';
 import SingIn from '../pages/SingIn';
 import NotFound from '../pages/NotFound';
-// import BlogEntryHook from '../hooks/BlogEntryHook';
+import Carousel from './NewCarousel/Carousel';
 
 type ScrollToTopProps = {
   children: ReactChild[] | ReactNode;
@@ -40,12 +40,12 @@ const PagesRouter: VoidFunctionComponent = () => {
         <Route path="/howItWorks" component={HowItWorks} />
         <Route path="/catalogue" component={Catalogue} />
         <Route path="/singIn" component={SingIn} />
-        {
-          // <Route path="/blog/:blogId" component={BlogEntryHook} />
-        }
         <Route path="/victoria-gg">
           <Redirect to="/" />
         </Route>
+
+        <Route path="/carousel" component={Carousel} />
+
         <Route path="*" exact={true} component={NotFound} />
       </Switch>
     </ScrollToTop>
