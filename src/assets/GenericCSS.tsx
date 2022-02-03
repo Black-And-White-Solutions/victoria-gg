@@ -15,7 +15,6 @@ export const lineClamping = css<LineClampProps>`
   /* stylelint-disable -- Is deleting webkit rules. */
   display: -webkit-box;
   overflow: hidden;
-  text-overflow: ellipsis;
   -webkit-line-clamp: ${({ numberOfLines }) => numberOfLines || 1};
   -webkit-box-orient: vertical;
   /* stylelint-enable */

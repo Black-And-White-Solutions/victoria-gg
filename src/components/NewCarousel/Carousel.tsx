@@ -4,77 +4,42 @@ import React, {
   useState,
   VoidFunctionComponent,
 } from 'react';
-import styled from 'styled-components';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import {
+  CarouselButton,
+  CarouselImage,
+  CarouselSlide,
+  CarouselSlider,
+  CarouselWrapper,
+  TextArea,
+  TextContent,
+  TextTitle,
+} from './CarouselComponents';
 import slides from '../../assets/JSONs/Home.json';
 
-type CarouselSliderProps = {
-  $slide?: number;
-};
-
-type CarouselButtonProps = {
-  $position: 'left' | 'right';
-};
-
-const SMALL_COOLDOWN = 5000;
-
-const CarouselWrapper = styled.div`
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 512px;
-`;
-
-const CarouselSlider = styled.div<CarouselSliderProps>`
-  transition: transform 0.3s;
-  white-space: nowrap;
-  ${({ $slide }) => `transform: translateX(-${$slide}00%)`}
-`;
-
-const CarouselSlide = styled.div`
-  display: inline-flex;
-  overflow: hidden;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-`;
-
-const CarouselImage = styled.img`
-  width: 100%;
-  min-width: 1536px;
-  height: auto;
-  min-height: 100%;
-`;
-
-const CarouselButton = styled.button<CarouselButtonProps>`
-  position: absolute;
-  z-index: 5;
-  top: 0;
-  ${({ $position }) => `${$position}: 0;`}
-  display: flex;
-  width: 2em;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: #25252624;
-  color: #fff;
-  font-size: 4em;
-`;
+const COOLDOWN = 5000;
 
 const Carousel: VoidFunctionComponent = () => {
   const [current, setCurrent] = useState(0);
+  const [hovered, setHovered] = useState(false);
 
   const carouselSlides: ReactNode[] = slides.map(value => {
     return (
       <CarouselSlide key={value.blogId}>
-        <CarouselImage src={value.image} alt={value.blogId} />
+        <TextArea $hovered={hovered}>
+          <TextTitle>{value.title}</TextTitle>
+          <TextContent>{value.description}</TextContent>
+        </TextArea>
+        <CarouselImage
+          src={value.image}
+          alt={value.blogId}
+          $hovered={hovered}
+        />
       </CarouselSlide>
     );
   });
 
-  const updateCurrentSlide: (arg: 'next' | 'prev') => void = action => {
+  const updateCurrentSlide: (arg0: 'next' | 'prev') => void = action => {
     switch (action) {
       case 'next':
         return current < slides.length - 1
@@ -87,27 +52,33 @@ const Carousel: VoidFunctionComponent = () => {
     }
   };
 
-  const time = SMALL_COOLDOWN;
+  const time = COOLDOWN;
   useEffect(() => {
-    const next = current < slides.length - 1 ? current + 1 : 0;
-    const id = setTimeout(() => setCurrent(next), time);
-    return () => clearTimeout(id);
-  }, [current]);
+    const interval = setInterval(() => {
+      if (!hovered) updateCurrentSlide('next');
+    }, time);
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  });
 
   return (
-    <CarouselWrapper>
+    <CarouselWrapper
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
       <CarouselButton
         $position="left"
         onClick={() => updateCurrentSlide('prev')}
       >
-        <FaArrowLeft />
+        <FaChevronLeft />
       </CarouselButton>
       <CarouselSlider $slide={current}>{carouselSlides}</CarouselSlider>
       <CarouselButton
         $position="right"
         onClick={() => updateCurrentSlide('next')}
       >
-        <FaArrowRight />
+        <FaChevronRight />
       </CarouselButton>
     </CarouselWrapper>
   );

@@ -2,7 +2,7 @@ import React, { VoidFunctionComponent } from 'react';
 import Container from '../components/Container';
 import MiniDisplayer from '../components/Displayer/MiniDisplayer';
 import { ButtonLink, Image } from '../components/Displayer/DisplayerComponents';
-import Carousel from '../components/Carousel/Carousel';
+import Carousel from '../components/NewCarousel/Carousel';
 import { Title, Showcase } from '../components/HomeComponents';
 import { size } from '../assets/mediaSizes.js';
 
